@@ -1,0 +1,1241 @@
+{
+ "python": "3.12.16",
+ "data": "synthetic test bed only",
+ "params": [
+  "v_ego",
+  "gap",
+  "dv",
+  "v_lat"
+ ],
+ "units": {
+  "v_ego": "m/s",
+  "gap": "m",
+  "dv": "m/s",
+  "v_lat": "m/s"
+ },
+ "criticality": "TTC at lane crossing < 2.0 s",
+ "events": {
+  "n": 400,
+  "seed": 2026,
+  "n_train": 240,
+  "n_heldout": 160,
+  "split": "random by event, seed 2027",
+  "generator": "v_ego = 12 + 30 Beta(5,4); dv ~ N(1.5 + 0.15 (v_ego - 28), 3.0); log(gap/v_ego) ~ N(log 0.7 + 0.05 dv, 0.4); log v_lat ~ N(log 0.9 - 0.4 (log(gap/v_ego) - log 0.7), 0.2); physically impossible events rejected",
+  "quantiles": {
+   "v_ego": {
+    "p1": 19.59,
+    "p25": 25.72,
+    "p50": 29.44,
+    "p75": 32.26,
+    "p99": 37.98
+   },
+   "gap": {
+    "p1": 7.96,
+    "p25": 16.46,
+    "p50": 22.34,
+    "p75": 30.41,
+    "p99": 64.16
+   },
+   "dv": {
+    "p1": -5.32,
+    "p25": -0.51,
+    "p50": 1.71,
+    "p75": 3.93,
+    "p99": 8.02
+   },
+   "v_lat": {
+    "p1": 0.46,
+    "p25": 0.73,
+    "p50": 0.88,
+    "p75": 1.05,
+    "p99": 1.64
+   }
+  },
+  "spearman": [
+   [
+    1.0,
+    0.328,
+    0.301,
+    -0.027
+   ],
+   [
+    0.328,
+    1.0,
+    0.525,
+    -0.664
+   ],
+   [
+    0.301,
+    0.525,
+    1.0,
+    -0.349
+   ],
+   [
+    -0.027,
+    -0.664,
+    -0.349,
+    1.0
+   ]
+  ],
+  "critical_share": 0.075,
+  "critical_n": 30,
+  "critical_share_train": 0.08333333333333333,
+  "critical_share_heldout": 0.0625,
+  "closing_share": 0.7,
+  "ttc_sw_min": 0.5413846645966136,
+  "drac_sw_max": 7.129136686635206,
+  "all_valid": true
+ },
+ "fit": {
+  "train_n": 240,
+  "gmcm": "GMCM-style approximation (Gaussian mixture on normal scores) run on G2 only; the full GMCM estimator was not run",
+  "models": {
+   "independent marginals (1-D KDE)": {
+    "train_loglik_per_event": -9.29386890770749,
+    "bandwidths": [
+     1.5015102157151634,
+     4.468767042642989,
+     1.079103451345472,
+     0.08757607522367176
+    ]
+   },
+   "multivariate KDE": {
+    "train_loglik_per_event": -8.49012159838706,
+    "scott_factor": 0.5040499718056806
+   },
+   "Gaussian copula + KDE marginals": {
+    "train_loglik_per_event": -8.696984428258224,
+    "bandwidths": [
+     1.5015102157151634,
+     4.468767042642989,
+     1.079103451345472,
+     0.08757607522367176
+    ],
+    "R": [
+     [
+      1.0,
+      0.316,
+      0.258,
+      0.026
+     ],
+     [
+      0.316,
+      1.0,
+      0.481,
+      -0.697
+     ],
+     [
+      0.258,
+      0.481,
+      1.0,
+      -0.358
+     ],
+     [
+      0.026,
+      -0.697,
+      -0.358,
+      1.0
+     ]
+    ]
+   }
+  }
+ },
+ "heldout_comparison": {
+  "n_heldout": 160,
+  "n_samples": 10000,
+  "sample_seed": 7,
+  "spearman_heldout": [
+   [
+    1.0,
+    0.384,
+    0.362,
+    -0.141
+   ],
+   [
+    0.384,
+    1.0,
+    0.558,
+    -0.618
+   ],
+   [
+    0.362,
+    0.558,
+    1.0,
+    -0.34
+   ],
+   [
+    -0.141,
+    -0.618,
+    -0.34,
+    1.0
+   ]
+  ],
+  "reference_train_vs_heldout": {
+   "w1": {
+    "v_ego": 0.33760645341589546,
+    "gap": 1.5922526667552885,
+    "dv": 0.2961111580828488,
+    "v_lat": 0.030929478987617467
+   },
+   "spearman_err_mean": 0.08971890727462184,
+   "spearman_err_max": 0.18374973842670855
+  },
+  "models": {
+   "independent marginals (1-D KDE)": {
+    "heldout_loglik_per_event": -9.250899611333905,
+    "heldout_loglik_se": 0.15079474292120576,
+    "w1": {
+     "v_ego": 0.4257735956397454,
+     "gap": 2.1115971133747933,
+     "dv": 0.3013560341108887,
+     "v_lat": 0.041083050392083036
+    },
+    "spearman_err_mean": 0.3936798650755435,
+    "spearman_err_max": 0.6081095510951358,
+    "validity": {
+     "gap > 0": 0.9976,
+     "0 < v_ego <= 45 m/s": 1.0,
+     "v_cutter > 0": 1.0,
+     "0 < v_lat <= 3 m/s": 1.0,
+     "gap at lane crossing > 0": 0.9496,
+     "required decel <= 8 m/s^2": 0.9807,
+     "all": 0.9297
+    },
+    "critical_share_samples": 0.10917500268903947
+   },
+   "multivariate KDE": {
+    "heldout_loglik_per_event": -8.846643030795333,
+    "heldout_loglik_se": 0.10365500335357479,
+    "w1": {
+     "v_ego": 0.549278476400643,
+     "gap": 2.992746801376761,
+     "dv": 0.43884638744678695,
+     "v_lat": 0.05175559274533044
+    },
+    "spearman_err_mean": 0.07986541265240019,
+    "spearman_err_max": 0.17467275117800796,
+    "validity": {
+     "gap > 0": 0.9899,
+     "0 < v_ego <= 45 m/s": 1.0,
+     "v_cutter > 0": 1.0,
+     "0 < v_lat <= 3 m/s": 0.9999,
+     "gap at lane crossing > 0": 0.9781,
+     "required decel <= 8 m/s^2": 0.9871,
+     "all": 0.9605
+    },
+    "critical_share_samples": 0.08505986465382613
+   },
+   "Gaussian copula + KDE marginals": {
+    "heldout_loglik_per_event": -8.70235330082133,
+    "heldout_loglik_se": 0.12956284604778778,
+    "w1": {
+     "v_ego": 0.3778305567457626,
+     "gap": 1.9074889229088028,
+     "dv": 0.3586471203869652,
+     "v_lat": 0.03957886385912685
+    },
+    "spearman_err_mean": 0.08916278197737391,
+    "spearman_err_max": 0.16928254161210585,
+    "validity": {
+     "gap > 0": 0.9984,
+     "0 < v_ego <= 45 m/s": 1.0,
+     "v_cutter > 0": 1.0,
+     "0 < v_lat <= 3 m/s": 1.0,
+     "gap at lane crossing > 0": 0.9931,
+     "required decel <= 8 m/s^2": 0.9917,
+     "all": 0.9838
+    },
+    "critical_share_samples": 0.08192722097987395
+   }
+  },
+  "best_by_metric": {
+   "loglik": "Gaussian copula + KDE marginals",
+   "spearman": "multivariate KDE",
+   "validity": "Gaussian copula + KDE marginals",
+   "w1_mean_rank": "Gaussian copula + KDE marginals"
+  },
+  "paired_loglik_diff": {
+   "Gaussian copula + KDE marginals - multivariate KDE": {
+    "mean": 0.1442897299740057,
+    "se": 0.04245873007579459,
+    "z": 3.398352464061665,
+    "share_events_better": 0.7125
+   },
+   "Gaussian copula + KDE marginals - independent marginals (1-D KDE)": {
+    "mean": 0.5485463105125775,
+    "se": 0.0768119499124198,
+    "z": 7.1414188956018485,
+    "share_events_better": 0.85
+   },
+   "multivariate KDE - independent marginals (1-D KDE)": {
+    "mean": 0.4042565805385719,
+    "se": 0.08987163839791068,
+    "z": 4.498155232785541,
+    "share_events_better": 0.69375
+   }
+  },
+  "accepted_only": {
+   "independent marginals (1-D KDE)": {
+    "acceptance_rate": 0.9297,
+    "n_accepted": 9297,
+    "w1_all": {
+     "v_ego": 0.4257735956397454,
+     "gap": 2.1115971133747933,
+     "dv": 0.3013560341108887,
+     "v_lat": 0.041083050392083036
+    },
+    "w1_accepted": {
+     "v_ego": 0.43354082787056897,
+     "gap": 2.7767325551529987,
+     "dv": 0.23385484836010642,
+     "v_lat": 0.04346656745826362
+    },
+    "critical_share_of_all_samples": 0.1015,
+    "critical_share_accepted": 0.10917500268903947,
+    "heldout_loglik_truncated": -9.17800628581358
+   },
+   "multivariate KDE": {
+    "acceptance_rate": 0.9605,
+    "n_accepted": 9605,
+    "w1_all": {
+     "v_ego": 0.549278476400643,
+     "gap": 2.992746801376761,
+     "dv": 0.43884638744678695,
+     "v_lat": 0.05175559274533044
+    },
+    "w1_accepted": {
+     "v_ego": 0.5285622483263023,
+     "gap": 3.0087240568677025,
+     "dv": 0.3499109672340567,
+     "v_lat": 0.047989635872602764
+    },
+    "critical_share_of_all_samples": 0.0817,
+    "critical_share_accepted": 0.08505986465382613,
+    "heldout_loglik_truncated": -8.806341734021807
+   },
+   "Gaussian copula + KDE marginals": {
+    "acceptance_rate": 0.9838,
+    "n_accepted": 9838,
+    "w1_all": {
+     "v_ego": 0.3778305567457626,
+     "gap": 1.9074889229088028,
+     "dv": 0.3586471203869652,
+     "v_lat": 0.03957886385912685
+    },
+    "w1_accepted": {
+     "v_ego": 0.3774041424802317,
+     "gap": 1.990439311230439,
+     "dv": 0.29844253903909157,
+     "v_lat": 0.03772981424690902
+    },
+    "critical_share_of_all_samples": 0.0806,
+    "critical_share_accepted": 0.08192722097987395,
+    "heldout_loglik_truncated": -8.686020646200431
+   }
+  }
+ },
+ "importance_sampling": {
+  "model": "Gaussian copula + KDE marginals",
+  "n": 1000,
+  "n_reference": 1000000,
+  "proposal": "N(mu, R) in normal-score space; mu = mean z of the 10 % pilot samples (n 2000) with the smallest TTC at lane crossing (one cross-entropy step)",
+  "targets": {
+   "TTC_sw < 2 s": {
+    "mu_z": {
+     "v_ego": 0.027,
+     "gap": -0.275,
+     "dv": 1.143,
+     "v_lat": -0.011
+    },
+    "reference": {
+     "estimate": 0.079462,
+     "se": 0.00027045848212988257,
+     "hits": 79462
+    },
+    "crude": {
+     "estimate": 0.086,
+     "se": 0.008865889690267977,
+     "hits": 86
+    },
+    "importance": {
+     "estimate": 0.0794604345258646,
+     "se": 0.004078602792663081,
+     "ess": 188.99988177312798,
+     "ess_hits": 275.33014079727417,
+     "hit_share": 0.334,
+     "w_mean": 0.8813193326035567,
+     "w_min": 0.002258003867619591,
+     "w_median": 0.33840198880849226,
+     "w_max": 36.61122203301881,
+     "w_hits_median": 0.2227097432876492
+    },
+    "variance_reduction": 4.725217703746989,
+    "crude_n_for_same_se": 4397.22195976271
+   },
+   "TTC_sw < 1 s": {
+    "mu_z": {
+     "v_ego": 0.027,
+     "gap": -0.275,
+     "dv": 1.143,
+     "v_lat": -0.011
+    },
+    "reference": {
+     "estimate": 0.021073,
+     "se": 0.00014362774338894278,
+     "hits": 21073
+    },
+    "crude": {
+     "estimate": 0.02,
+     "se": 0.004427188724235731,
+     "hits": 20
+    },
+    "importance": {
+     "estimate": 0.021158573051026218,
+     "se": 0.0018297935060587317,
+     "ess": 188.99988177312798,
+     "ess_hits": 118.04546230731279,
+     "hit_share": 0.132,
+     "w_mean": 0.8813193326035567,
+     "w_min": 0.002258003867619591,
+     "w_median": 0.33840198880849226,
+     "w_max": 36.61122203301881,
+     "w_hits_median": 0.16160348645129624
+    },
+    "variance_reduction": 5.85398907312162,
+    "crude_n_for_same_se": 6161.302195420372
+   }
+  }
+ },
+ "replay": {
+  "simulator": "esmini",
+  "available": true,
+  "n": 10,
+  "selection": "5 intended-critical + 5 non-critical valid variants from the importance-sampling proposal (seed 31)",
+  "criterion": "open loop (ego constant speed): replayed TTC at lead switch < 2.0 s iff intended",
+  "reproduced": 8,
+  "switched": 10,
+  "ttc_abs_err_median": 0.1335349268287751,
+  "switch_delay_median": 0.1222019881527232,
+  "acc_collisions": 0,
+  "acc_decel_over_limit": 6,
+  "runs": [
+   {
+    "name": "cutin_00",
+    "v_ego": 30.443941891117838,
+    "gap": 17.066714296865637,
+    "dv": 6.653556413201999,
+    "v_lat": 1.3474666094975989,
+    "intended_ttc_sw": 1.2663179348720577,
+    "intended_gap_sw": 8.42551781672069,
+    "t_switch_planned": 3.2987334807891715,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 3.4,
+    "replay_gap_sw": 7.695100999999994,
+    "replay_ttc_sw": 1.156539426956137,
+    "intended_critical": true,
+    "replay_critical": true,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 6.3986189999999965,
+     "min_thw": 0.2619260487921936,
+     "min_ttc": 1.675084456900386,
+     "peak_decel": 10.0,
+     "collision": false,
+     "decel_over_limit": true
+    }
+   },
+   {
+    "name": "cutin_01",
+    "v_ego": 24.16896538716499,
+    "gap": 17.940446246947545,
+    "dv": 6.712197604208501,
+    "v_lat": 0.8220848903331514,
+    "intended_ttc_sw": 0.5440786568551508,
+    "intended_gap_sw": 3.651963457044122,
+    "t_switch_planned": 4.1287339307389646,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 4.3,
+    "replay_gap_sw": 2.450486000000012,
+    "replay_ttc_sw": 0.3650795708171277,
+    "intended_critical": true,
+    "replay_critical": true,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 4.535611999999986,
+     "min_thw": 0.2600571203935892,
+     "min_ttc": 1165.495379876497,
+     "peak_decel": 10.0,
+     "collision": false,
+     "decel_over_limit": true
+    }
+   },
+   {
+    "name": "cutin_02",
+    "v_ego": 25.84950249600291,
+    "gap": 13.727231469341152,
+    "dv": 4.4067119708784555,
+    "v_lat": 0.8198399107840941,
+    "intended_ttc_sw": 0.9805103777866196,
+    "intended_gap_sw": 4.320826819362853,
+    "t_switch_planned": 4.134563073815595,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 4.3,
+    "replay_gap_sw": 3.5498949999999923,
+    "replay_ttc_sw": 0.8055656474862979,
+    "intended_critical": true,
+    "replay_critical": true,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 5.3094569999999806,
+     "min_thw": 0.25642929398181874,
+     "min_ttc": Infinity,
+     "peak_decel": 9.361720000000009,
+     "collision": false,
+     "decel_over_limit": true
+    }
+   },
+   {
+    "name": "cutin_03",
+    "v_ego": 27.780818886532888,
+    "gap": 4.2561732224617375,
+    "dv": 2.68669306117705,
+    "v_lat": 1.5027397989758537,
+    "intended_ttc_sw": 0.419628421214082,
+    "intended_gap_sw": 1.1274127675485546,
+    "t_switch_planned": 3.164539597069738,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 3.3,
+    "replay_gap_sw": 0.7003409999999803,
+    "replay_ttc_sw": 0.26067027382733343,
+    "intended_critical": true,
+    "replay_critical": true,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 1.1128269999999816,
+     "min_thw": 0.04490475966839378,
+     "min_ttc": 21.329838877240398,
+     "peak_decel": 7.259735000000003,
+     "collision": false,
+     "decel_over_limit": false
+    }
+   },
+   {
+    "name": "cutin_04",
+    "v_ego": 32.87726657635297,
+    "gap": 8.605584448461551,
+    "dv": 3.8160624263281457,
+    "v_lat": 1.639936253104843,
+    "intended_ttc_sw": 1.1879806521219634,
+    "intended_gap_sw": 4.533408329767433,
+    "t_switch_planned": 3.0671146495400516,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 3.2,
+    "replay_gap_sw": 3.9672649999999976,
+    "replay_ttc_sw": 1.0396225114732105,
+    "intended_critical": true,
+    "replay_critical": true,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 4.399623999999989,
+     "min_thw": 0.15112253888535684,
+     "min_ttc": 7.150257060805309,
+     "peak_decel": 8.791900000000012,
+     "collision": false,
+     "decel_over_limit": true
+    }
+   },
+   {
+    "name": "cutin_05",
+    "v_ego": 31.7755584958608,
+    "gap": 27.81551291442388,
+    "dv": 3.901369709126257,
+    "v_lat": 0.9211543978714892,
+    "intended_ttc_sw": 5.229888708259673,
+    "intended_gap_sw": 20.403729388505738,
+    "t_switch_planned": 3.899790093868871,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 4.0,
+    "replay_gap_sw": 19.97895299999999,
+    "replay_ttc_sw": 5.121010855420237,
+    "intended_critical": false,
+    "replay_critical": false,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 18.723512999999997,
+     "min_thw": 0.6421405923835625,
+     "min_ttc": 6.16851011250248,
+     "peak_decel": 6.288855000000009,
+     "collision": false,
+     "decel_over_limit": false
+    }
+   },
+   {
+    "name": "cutin_06",
+    "v_ego": 29.63853705562397,
+    "gap": 53.01784595898104,
+    "dv": 9.981279627550316,
+    "v_lat": 0.5308389490377514,
+    "intended_ttc_sw": 2.0150599280703148,
+    "intended_gap_sw": 20.11287660834124,
+    "t_switch_planned": 5.296668421132651,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 5.4,
+    "replay_gap_sw": 19.05315999999999,
+    "replay_ttc_sw": 1.9088894410336144,
+    "intended_critical": false,
+    "replay_critical": true,
+    "reproduced": false,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 14.36330000000001,
+     "min_thw": 0.6495491142883858,
+     "min_ttc": 2.1214303529118337,
+     "peak_decel": 10.0,
+     "collision": false,
+     "decel_over_limit": true
+    }
+   },
+   {
+    "name": "cutin_07",
+    "v_ego": 30.50046791349387,
+    "gap": 20.344185886264395,
+    "dv": 3.865640156134379,
+    "v_lat": 1.1128072928763806,
+    "intended_ttc_sw": 3.6902252153949413,
+    "intended_gap_sw": 14.265082777810324,
+    "t_switch_planned": 3.5725993271275263,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 3.7,
+    "replay_gap_sw": 13.728758999999997,
+    "replay_ttc_sw": 3.551484100950939,
+    "intended_critical": false,
+    "replay_critical": false,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 12.735286000000002,
+     "min_thw": 0.4616538608629725,
+     "min_ttc": 4.423807131641261,
+     "peak_decel": 7.241820000000008,
+     "collision": false,
+     "decel_over_limit": false
+    }
+   },
+   {
+    "name": "cutin_08",
+    "v_ego": 31.630081940766363,
+    "gap": 28.577830203166627,
+    "dv": 5.60558589078598,
+    "v_lat": 0.5676295410723782,
+    "intended_ttc_sw": 2.0151020142458083,
+    "intended_gap_sw": 11.295827419550712,
+    "t_switch_planned": 5.082996696567028,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 5.2,
+    "replay_gap_sw": 10.616908999999993,
+    "replay_ttc_sw": 1.8939873547564854,
+    "intended_critical": false,
+    "replay_critical": true,
+    "reproduced": false,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 9.183305000000018,
+     "min_thw": 0.3411840719665463,
+     "min_ttc": 2.305224351472318,
+     "peak_decel": 10.0,
+     "collision": false,
+     "decel_over_limit": true
+    }
+   },
+   {
+    "name": "cutin_09",
+    "v_ego": 24.971391076707516,
+    "gap": 16.072432511099358,
+    "dv": 3.9716385234038656,
+    "v_lat": 1.0388353581249135,
+    "intended_ttc_sw": 2.362222664087869,
+    "intended_gap_sw": 9.38189453354909,
+    "t_switch_planned": 3.6845787797969556,
+    "esmini_exit_open": 0,
+    "switched": true,
+    "t_switch": 3.8,
+    "replay_gap_sw": 8.872218000000004,
+    "replay_ttc_sw": 2.2338939248743213,
+    "intended_critical": false,
+    "replay_critical": false,
+    "reproduced": true,
+    "acc": {
+     "esmini_exit": 0,
+     "min_gap": 7.950618999999989,
+     "min_thw": 0.36587282669442,
+     "min_ttc": 2.8322362624593627,
+     "peak_decel": 7.977395000000005,
+     "collision": false,
+     "decel_over_limit": false
+    }
+   }
+  ],
+  "files": "results/replay_cutin/ (xosc, csv, log per run; regenerated, not tracked)"
+ },
+ "figures": [
+  "figures/gen_cutin_marginals.png",
+  "figures/gen_cutin_pairs.png",
+  "figures/gen_cutin_validity.png"
+ ],
+ "robustness": {
+  "tail_dependence_definition": "P(time gap in its lowest q | relative speed in its highest q), ranks within the sample",
+  "generators": {
+   "G1": {
+    "dependence": "Essentially Gaussian: given v_ego, (dv, log time gap, log v_lat) is a linear-Gaussian chain (dv linear in v_ego; log(gap/v_ego) linear in dv; log v_lat linear in log(gap/v_ego); normal noise). Departures from normality come from three places: a Beta draw for ego speed, multiplying time gap by v_ego to get gap, and discarding impossible events. No tail dependence.",
+    "n": 400,
+    "n_train": 240,
+    "n_heldout": 160,
+    "truth": {
+     "n": 200000,
+     "critical_share": 0.074075,
+     "tail_dep_q10": 0.0102,
+     "tail_dep_q05": 0.0009,
+     "spearman": [
+      [
+       1.0,
+       0.419,
+       0.234,
+       -0.055
+      ],
+      [
+       0.419,
+       1.0,
+       0.411,
+       -0.593
+      ],
+      [
+       0.234,
+       0.411,
+       1.0,
+       -0.223
+      ],
+      [
+       -0.055,
+       -0.593,
+       -0.223,
+       1.0
+      ]
+     ]
+    },
+    "heldout": {
+     "critical": 10,
+     "tail_dep_q10": 0.0,
+     "critical_share": 0.0625,
+     "critical_ci95": [
+      0.03429929567623645,
+      0.11121686139254218
+     ]
+    },
+    "models": {
+     "independent marginals (1-D KDE)": {
+      "heldout_loglik_per_event": -9.250899611333905,
+      "heldout_loglik_se": 0.15079474292120576,
+      "train_loglik_per_event": -9.29386890770749,
+      "w1": {
+       "v_ego": 0.4257735956397454,
+       "gap": 2.1115971133747933,
+       "dv": 0.3013560341108887,
+       "v_lat": 0.041083050392083036
+      },
+      "spearman_err_mean": 0.3936798650755435,
+      "spearman_err_vs_truth": 0.3155956250256587,
+      "valid_share": 0.9297,
+      "critical_share_valid": 0.10917500268903947,
+      "tail_dep_q10": 0.012903225806451613,
+      "tail_dep_q05": 0.0,
+      "critical_ci95": [
+       0.1029963653195524,
+       0.1156764911238903
+      ],
+      "critical_vs_truth": "over",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9297,
+       "n_accepted": 9297,
+       "w1_all": {
+        "v_ego": 0.4257735956397454,
+        "gap": 2.1115971133747933,
+        "dv": 0.3013560341108887,
+        "v_lat": 0.041083050392083036
+       },
+       "w1_accepted": {
+        "v_ego": 0.43354082787056897,
+        "gap": 2.7767325551529987,
+        "dv": 0.23385484836010642,
+        "v_lat": 0.04346656745826362
+       },
+       "critical_share_of_all_samples": 0.1015,
+       "critical_share_accepted": 0.10917500268903947,
+       "heldout_loglik_truncated": -9.17800628581358
+      }
+     },
+     "multivariate KDE": {
+      "heldout_loglik_per_event": -8.846643030795333,
+      "heldout_loglik_se": 0.10365500335357479,
+      "train_loglik_per_event": -8.49012159838706,
+      "w1": {
+       "v_ego": 0.549278476400643,
+       "gap": 2.992746801376761,
+       "dv": 0.43884638744678695,
+       "v_lat": 0.05175559274533044
+      },
+      "spearman_err_mean": 0.07986541265240019,
+      "spearman_err_vs_truth": 0.08240169893202991,
+      "valid_share": 0.9605,
+      "critical_share_valid": 0.08505986465382613,
+      "tail_dep_q10": 0.0,
+      "tail_dep_q05": 0.0,
+      "critical_ci95": [
+       0.07964528142227202,
+       0.09080623273319081
+      ],
+      "critical_vs_truth": "over",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9605,
+       "n_accepted": 9605,
+       "w1_all": {
+        "v_ego": 0.549278476400643,
+        "gap": 2.992746801376761,
+        "dv": 0.43884638744678695,
+        "v_lat": 0.05175559274533044
+       },
+       "w1_accepted": {
+        "v_ego": 0.5285622483263023,
+        "gap": 3.0087240568677025,
+        "dv": 0.3499109672340567,
+        "v_lat": 0.047989635872602764
+       },
+       "critical_share_of_all_samples": 0.0817,
+       "critical_share_accepted": 0.08505986465382613,
+       "heldout_loglik_truncated": -8.806341734021807
+      }
+     },
+     "Gaussian copula + KDE marginals": {
+      "heldout_loglik_per_event": -8.70235330082133,
+      "heldout_loglik_se": 0.12956284604778778,
+      "train_loglik_per_event": -8.696984428258224,
+      "w1": {
+       "v_ego": 0.3778305567457626,
+       "gap": 1.9074889229088028,
+       "dv": 0.3586471203869652,
+       "v_lat": 0.03957886385912685
+      },
+      "spearman_err_mean": 0.08916278197737391,
+      "spearman_err_vs_truth": 0.07895894266160235,
+      "valid_share": 0.9838,
+      "critical_share_valid": 0.08192722097987395,
+      "tail_dep_q10": 0.0040650406504065045,
+      "tail_dep_q05": 0.0,
+      "critical_ci95": [
+       0.07666955829160188,
+       0.08751125924970052
+      ],
+      "critical_vs_truth": "over",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9838,
+       "n_accepted": 9838,
+       "w1_all": {
+        "v_ego": 0.3778305567457626,
+        "gap": 1.9074889229088028,
+        "dv": 0.3586471203869652,
+        "v_lat": 0.03957886385912685
+       },
+       "w1_accepted": {
+        "v_ego": 0.3774041424802317,
+        "gap": 1.990439311230439,
+        "dv": 0.29844253903909157,
+        "v_lat": 0.03772981424690902
+       },
+       "critical_share_of_all_samples": 0.0806,
+       "critical_share_accepted": 0.08192722097987395,
+       "heldout_loglik_truncated": -8.686020646200431
+      }
+     },
+     "t copula + KDE marginals": {
+      "heldout_loglik_per_event": -8.690625558097432,
+      "heldout_loglik_se": 0.13265295254581463,
+      "train_loglik_per_event": -8.694575826455047,
+      "w1": {
+       "v_ego": 0.38093376692122105,
+       "gap": 1.907895240255593,
+       "dv": 0.35149703365126894,
+       "v_lat": 0.03917001557056305
+      },
+      "spearman_err_mean": 0.0922362992581091,
+      "spearman_err_vs_truth": 0.09754638108547675,
+      "valid_share": 0.9866,
+      "critical_share_valid": 0.07551185890938578,
+      "tail_dep_q10": 0.002026342451874367,
+      "tail_dep_q05": 0.0,
+      "nu": 50,
+      "critical_ci95": [
+       0.0704618049603142,
+       0.08089235658975569
+      ],
+      "critical_vs_truth": "consistent",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9866,
+       "n_accepted": 9866,
+       "w1_all": {
+        "v_ego": 0.38093376692122105,
+        "gap": 1.907895240255593,
+        "dv": 0.35149703365126894,
+        "v_lat": 0.03917001557056305
+       },
+       "w1_accepted": {
+        "v_ego": 0.37848255695805416,
+        "gap": 1.9651773082072501,
+        "dv": 0.3070574691901389,
+        "v_lat": 0.03729520407643616
+       },
+       "critical_share_of_all_samples": 0.0745,
+       "critical_share_accepted": 0.07551185890938578,
+       "heldout_loglik_truncated": -8.677134967914933
+      }
+     }
+    },
+    "paired_vs_gaussian_copula": {
+     "independent marginals (1-D KDE)": {
+      "mean": -0.5485463105125775,
+      "se": 0.0768119499124198
+     },
+     "multivariate KDE": {
+      "mean": -0.1442897299740057,
+      "se": 0.04245873007579459
+     },
+     "t copula + KDE marginals": {
+      "mean": 0.011727742723897594,
+      "se": 0.006816856133823943
+     }
+    },
+    "best_heldout_loglik": "t copula + KDE marginals"
+   },
+   "G2": {
+    "dependence": "G1 body (92 %) plus an 8 % 'aggressive' component (before rejection): dv ~ N(6.5, 1.0), log(gap/v_ego) = log 0.38 - 0.08 (dv - 6.5) + N(0, 0.12), log v_lat ~ N(log 1.7, 0.15): small time gaps coincide with fast closing only in this tail component (the body links larger closing speed to LARGER gaps), a joint tail no Gaussian dependence has.",
+    "n": 400,
+    "n_train": 240,
+    "n_heldout": 160,
+    "truth": {
+     "n": 200000,
+     "critical_share": 0.12238,
+     "tail_dep_q10": 0.2182,
+     "tail_dep_q05": 0.0736,
+     "spearman": [
+      [
+       1.0,
+       0.382,
+       0.236,
+       -0.026
+      ],
+      [
+       0.382,
+       1.0,
+       0.27,
+       -0.637
+      ],
+      [
+       0.236,
+       0.27,
+       1.0,
+       -0.062
+      ],
+      [
+       -0.026,
+       -0.637,
+       -0.062,
+       1.0
+      ]
+     ]
+    },
+    "heldout": {
+     "critical": 18,
+     "tail_dep_q10": 0.3125,
+     "critical_share": 0.1125,
+     "critical_ci95": [
+      0.07235575112573997,
+      0.17081570227803536
+     ]
+    },
+    "models": {
+     "independent marginals (1-D KDE)": {
+      "heldout_loglik_per_event": -9.601581039706963,
+      "heldout_loglik_se": 0.11925553933339655,
+      "train_loglik_per_event": -9.067601854161417,
+      "w1": {
+       "v_ego": 0.35677152095975173,
+       "gap": 1.7766570432883988,
+       "dv": 0.2755024897454992,
+       "v_lat": 0.04361776246294094
+      },
+      "spearman_err_mean": 0.2900966395259828,
+      "spearman_err_vs_truth": 0.26828016950837624,
+      "valid_share": 0.9394,
+      "critical_share_valid": 0.12039599744517777,
+      "tail_dep_q10": 0.022340425531914895,
+      "tail_dep_q05": 0.0,
+      "critical_ci95": [
+       0.11396985944588374,
+       0.1271324804786368
+      ],
+      "critical_vs_truth": "consistent",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9394,
+       "n_accepted": 9394,
+       "w1_all": {
+        "v_ego": 0.35677152095975173,
+        "gap": 1.7766570432883988,
+        "dv": 0.2755024897454992,
+        "v_lat": 0.04361776246294094
+       },
+       "w1_accepted": {
+        "v_ego": 0.3566286695915328,
+        "gap": 1.4887830960222275,
+        "dv": 0.319243985081164,
+        "v_lat": 0.045464541943110996
+       },
+       "critical_share_of_all_samples": 0.1131,
+       "critical_share_accepted": 0.12039599744517777,
+       "heldout_loglik_truncated": -9.53906713431772
+      }
+     },
+     "multivariate KDE": {
+      "heldout_loglik_per_event": -9.195255965204439,
+      "heldout_loglik_se": 0.11278970477764227,
+      "train_loglik_per_event": -8.348617341928945,
+      "w1": {
+       "v_ego": 0.4920971434096415,
+       "gap": 1.7637873927521075,
+       "dv": 0.25684387999403413,
+       "v_lat": 0.03852988310267315
+      },
+      "spearman_err_mean": 0.0895173087238834,
+      "spearman_err_vs_truth": 0.04674743637410871,
+      "valid_share": 0.9638,
+      "critical_share_valid": 0.11734799750985682,
+      "tail_dep_q10": 0.0508298755186722,
+      "tail_dep_q05": 0.004149377593360996,
+      "critical_ci95": [
+       0.11107460225466671,
+       0.12392631292319721
+      ],
+      "critical_vs_truth": "consistent",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9638,
+       "n_accepted": 9638,
+       "w1_all": {
+        "v_ego": 0.4920971434096415,
+        "gap": 1.7637873927521075,
+        "dv": 0.25684387999403413,
+        "v_lat": 0.03852988310267315
+       },
+       "w1_accepted": {
+        "v_ego": 0.4872182791221895,
+        "gap": 1.4225467529124942,
+        "dv": 0.18888624982004795,
+        "v_lat": 0.04462239239315003
+       },
+       "critical_share_of_all_samples": 0.1131,
+       "critical_share_accepted": 0.11734799750985682,
+       "heldout_loglik_truncated": -9.158384490428533
+      }
+     },
+     "Gaussian copula + KDE marginals": {
+      "heldout_loglik_per_event": -9.136363422403127,
+      "heldout_loglik_se": 0.11437174884533725,
+      "train_loglik_per_event": -8.63305893665539,
+      "w1": {
+       "v_ego": 0.30169816216146494,
+       "gap": 1.7800496143792308,
+       "dv": 0.302049783043884,
+       "v_lat": 0.045256696577752754
+      },
+      "spearman_err_mean": 0.08552167859992708,
+      "spearman_err_vs_truth": 0.0427518062501524,
+      "valid_share": 0.9798,
+      "critical_share_valid": 0.10971626862625025,
+      "tail_dep_q10": 0.015306122448979591,
+      "tail_dep_q05": 0.006122448979591836,
+      "critical_ci95": [
+       0.10368002936174599,
+       0.11605843284723318
+      ],
+      "critical_vs_truth": "under",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9798,
+       "n_accepted": 9798,
+       "w1_all": {
+        "v_ego": 0.30169816216146494,
+        "gap": 1.7800496143792308,
+        "dv": 0.302049783043884,
+        "v_lat": 0.045256696577752754
+       },
+       "w1_accepted": {
+        "v_ego": 0.28280681098162347,
+        "gap": 1.5877755162600808,
+        "dv": 0.28985219264916373,
+        "v_lat": 0.04629827795052945
+       },
+       "critical_share_of_all_samples": 0.1075,
+       "critical_share_accepted": 0.10971626862625025,
+       "heldout_loglik_truncated": -9.115956612625464
+      }
+     },
+     "t copula + KDE marginals": {
+      "heldout_loglik_per_event": -9.135269307265983,
+      "heldout_loglik_se": 0.11697089691216743,
+      "train_loglik_per_event": -8.629410877857655,
+      "w1": {
+       "v_ego": 0.3014413540485975,
+       "gap": 1.8158739333988216,
+       "dv": 0.3020939042664264,
+       "v_lat": 0.04520287844374346
+      },
+      "spearman_err_mean": 0.06764596706516995,
+      "spearman_err_vs_truth": 0.024876094715395286,
+      "valid_share": 0.9782,
+      "critical_share_valid": 0.10764669801676549,
+      "tail_dep_q10": 0.01940755873340143,
+      "tail_dep_q05": 0.0020408163265306124,
+      "nu": 20,
+      "critical_ci95": [
+       0.10165798036727049,
+       0.11394346570559462
+      ],
+      "critical_vs_truth": "under",
+      "critical_within_heldout_ci": true,
+      "rejection": {
+       "acceptance_rate": 0.9782,
+       "n_accepted": 9782,
+       "w1_all": {
+        "v_ego": 0.3014413540485975,
+        "gap": 1.8158739333988216,
+        "dv": 0.3020939042664264,
+        "v_lat": 0.04520287844374346
+       },
+       "w1_accepted": {
+        "v_ego": 0.2723451218241176,
+        "gap": 1.6087117542853502,
+        "dv": 0.28978647235709043,
+        "v_lat": 0.04677512414575205
+       },
+       "critical_share_of_all_samples": 0.1053,
+       "critical_share_accepted": 0.10764669801676549,
+       "heldout_loglik_truncated": -9.113228176389102
+      }
+     }
+    },
+    "paired_vs_gaussian_copula": {
+     "independent marginals (1-D KDE)": {
+      "mean": -0.4652176173038338,
+      "se": 0.061134723959227984
+     },
+     "multivariate KDE": {
+      "mean": -0.05889254280130909,
+      "se": 0.047495753480517766
+     },
+     "t copula + KDE marginals": {
+      "mean": 0.0010941151371441026,
+      "se": 0.012044400658027685
+     }
+    },
+    "best_heldout_loglik": "t copula + KDE marginals"
+   }
+  }
+ },
+ "tail_models_g2": {
+  "rotated Clayton (gap x dv) + Gaussian rest": {
+   "heldout_loglik_per_event": -9.193926984853181,
+   "heldout_loglik_se": 0.11744236306923612,
+   "paired_vs_gaussian_copula": {
+    "mean": -0.05756356245005324,
+    "se": 0.020964373174424372
+   },
+   "train_loglik_per_event": -8.663413138533626,
+   "critical_share_valid": 0.12926930242185883,
+   "critical_ci95": [
+    0.12272656732263014,
+    0.13610672454509506
+   ],
+   "critical_vs_truth": "over",
+   "tail_dep_q10": 0.04136504653567735,
+   "tail_dep_q05": 0.004132231404958678,
+   "acceptance_rate": 0.9662,
+   "w1_accepted": {
+    "v_ego": 0.2769411494994947,
+    "gap": 1.3593113605582883,
+    "dv": 0.29823969070559686,
+    "v_lat": 0.042616860069912506
+   },
+   "theta": 0.0010000000000000002,
+   "lower_tail_dependence": 9.33263618503366e-302
+  },
+  "Gaussian mixture on normal scores (GMCM-style, two components)": {
+   "heldout_loglik_per_event": -9.131507327069892,
+   "heldout_loglik_se": 0.13601259832286602,
+   "paired_vs_gaussian_copula": {
+    "mean": 0.004856095333237376,
+    "se": 0.04814701810314827
+   },
+   "train_loglik_per_event": -8.450986645356966,
+   "critical_share_valid": 0.09274805299888743,
+   "critical_ci95": [
+    0.08718720478378202,
+    0.09862525428946813
+   ],
+   "critical_vs_truth": "under",
+   "tail_dep_q10": 0.16481294236602628,
+   "tail_dep_q05": 0.10303030303030303,
+   "acceptance_rate": 0.9887,
+   "w1_accepted": {
+    "v_ego": 0.3405042029986274,
+    "gap": 1.834550670075974,
+    "dv": 0.43666394763865035,
+    "v_lat": 0.06092027498313345
+   },
+   "weights": [
+    0.801,
+    0.199
+   ],
+   "means": [
+    [
+     -0.0,
+     0.23,
+     -0.02,
+     -0.24
+    ],
+    [
+     -0.0,
+     -0.77,
+     0.06,
+     1.06
+    ]
+   ]
+  }
+ }
+}

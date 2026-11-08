@@ -1,0 +1,14 @@
+Figures and text in this repository (figures/, README.md and the other Markdown
+files, and the synthetic results in results/ and data/synthetic/) are
+Copyright (c) 2026 Nihar Vaghela and are licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Attribution: "Nihar Vaghela, Scenario validation test bed", with a link to this
+repository and an indication of any changes.
+
+All code is licensed separately under the MIT License (see LICENSE).
+
+Third-party datasets (NGSIM, highD, Argoverse 2) are not part of this repository
+and are not covered by either licence. Each is governed by its own terms.

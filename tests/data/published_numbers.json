@@ -1,0 +1,831 @@
+{
+ "note": "Illustrative (synthetic). Numbers as first published; compared with fresh runs by experiments/check_numbers.py.",
+ "numbers": [
+  {
+   "label": "G1 events: critical share",
+   "file": "generation_cutin.json",
+   "path": [
+    "events",
+    "critical_share"
+   ],
+   "value": 0.075,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 truth: critical share",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "truth",
+    "critical_share"
+   ],
+   "value": 0.074075,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 truth: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "truth",
+    "tail_dep_q10"
+   ],
+   "value": 0.0102,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 held-out: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "heldout",
+    "tail_dep_q10"
+   ],
+   "value": 0.0,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 independent: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "independent marginals (1-D KDE)",
+    "heldout_loglik_per_event"
+   ],
+   "value": -9.250899611333905,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G1 independent: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "independent marginals (1-D KDE)",
+    "tail_dep_q10"
+   ],
+   "value": 0.012903225806451613,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 independent: critical share accepted",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "independent marginals (1-D KDE)",
+    "rejection",
+    "critical_share_accepted"
+   ],
+   "value": 0.10917500268903947,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 Gaussian: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "heldout_loglik_per_event"
+   ],
+   "value": -8.70235330082133,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G1 Gaussian: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "tail_dep_q10"
+   ],
+   "value": 0.0040650406504065045,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 Gaussian: critical share accepted",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "rejection",
+    "critical_share_accepted"
+   ],
+   "value": 0.08192722097987395,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 t: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "t copula + KDE marginals",
+    "heldout_loglik_per_event"
+   ],
+   "value": -8.690625558097432,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G1 t: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "t copula + KDE marginals",
+    "tail_dep_q10"
+   ],
+   "value": 0.002026342451874367,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G1 t: critical share accepted",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G1",
+    "models",
+    "t copula + KDE marginals",
+    "rejection",
+    "critical_share_accepted"
+   ],
+   "value": 0.07551185890938578,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 truth: critical share",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "truth",
+    "critical_share"
+   ],
+   "value": 0.12238,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 truth: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "truth",
+    "tail_dep_q10"
+   ],
+   "value": 0.2182,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 held-out: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "heldout",
+    "tail_dep_q10"
+   ],
+   "value": 0.3125,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 independent: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "independent marginals (1-D KDE)",
+    "heldout_loglik_per_event"
+   ],
+   "value": -9.601581039706963,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G2 independent: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "independent marginals (1-D KDE)",
+    "tail_dep_q10"
+   ],
+   "value": 0.022340425531914895,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 independent: critical share accepted",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "independent marginals (1-D KDE)",
+    "rejection",
+    "critical_share_accepted"
+   ],
+   "value": 0.12039599744517777,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 Gaussian: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "heldout_loglik_per_event"
+   ],
+   "value": -9.136363422403127,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G2 Gaussian: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "tail_dep_q10"
+   ],
+   "value": 0.015306122448979591,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 Gaussian: critical share accepted",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "rejection",
+    "critical_share_accepted"
+   ],
+   "value": 0.10971626862625025,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 t: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "t copula + KDE marginals",
+    "heldout_loglik_per_event"
+   ],
+   "value": -9.135269307265983,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G2 t: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "t copula + KDE marginals",
+    "tail_dep_q10"
+   ],
+   "value": 0.01940755873340143,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 t: critical share accepted",
+   "file": "generation_cutin.json",
+   "path": [
+    "robustness",
+    "generators",
+    "G2",
+    "models",
+    "t copula + KDE marginals",
+    "rejection",
+    "critical_share_accepted"
+   ],
+   "value": 0.10764669801676549,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 Clayton: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "tail_models_g2",
+    "rotated Clayton (gap x dv) + Gaussian rest",
+    "heldout_loglik_per_event"
+   ],
+   "value": -9.193926984853181,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G2 Clayton: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "tail_models_g2",
+    "rotated Clayton (gap x dv) + Gaussian rest",
+    "tail_dep_q10"
+   ],
+   "value": 0.04136504653567735,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 Clayton: critical share",
+   "file": "generation_cutin.json",
+   "path": [
+    "tail_models_g2",
+    "rotated Clayton (gap x dv) + Gaussian rest",
+    "critical_share_valid"
+   ],
+   "value": 0.12926930242185883,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 mixture: held-out log-lik",
+   "file": "generation_cutin.json",
+   "path": [
+    "tail_models_g2",
+    "Gaussian mixture on normal scores (GMCM-style, two components)",
+    "heldout_loglik_per_event"
+   ],
+   "value": -9.131507327069892,
+   "tol_abs": 0.03
+  },
+  {
+   "label": "G2 mixture: lambda(0.10)",
+   "file": "generation_cutin.json",
+   "path": [
+    "tail_models_g2",
+    "Gaussian mixture on normal scores (GMCM-style, two components)",
+    "tail_dep_q10"
+   ],
+   "value": 0.16481294236602628,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "G2 mixture: critical share",
+   "file": "generation_cutin.json",
+   "path": [
+    "tail_models_g2",
+    "Gaussian mixture on normal scores (GMCM-style, two components)",
+    "critical_share_valid"
+   ],
+   "value": 0.09274805299888743,
+   "tol_abs": 0.005
+  },
+  {
+   "label": "IS TTC_sw < 2 s: reference p",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 2 s",
+    "reference",
+    "estimate"
+   ],
+   "value": 0.079462,
+   "tol_rel": 0.05
+  },
+  {
+   "label": "IS TTC_sw < 2 s: estimate",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 2 s",
+    "importance",
+    "estimate"
+   ],
+   "value": 0.0794604345258646,
+   "tol_rel": 0.05
+  },
+  {
+   "label": "IS TTC_sw < 2 s: ESS",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 2 s",
+    "importance",
+    "ess"
+   ],
+   "value": 188.99988177312798,
+   "tol_rel": 0.05
+  },
+  {
+   "label": "IS TTC_sw < 2 s: variance reduction",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 2 s",
+    "variance_reduction"
+   ],
+   "value": 4.725217703746989,
+   "tol_rel": 0.1
+  },
+  {
+   "label": "IS TTC_sw < 1 s: reference p",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 1 s",
+    "reference",
+    "estimate"
+   ],
+   "value": 0.021073,
+   "tol_rel": 0.05
+  },
+  {
+   "label": "IS TTC_sw < 1 s: estimate",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 1 s",
+    "importance",
+    "estimate"
+   ],
+   "value": 0.021158573051026218,
+   "tol_rel": 0.05
+  },
+  {
+   "label": "IS TTC_sw < 1 s: ESS",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 1 s",
+    "importance",
+    "ess"
+   ],
+   "value": 188.99988177312798,
+   "tol_rel": 0.05
+  },
+  {
+   "label": "IS TTC_sw < 1 s: variance reduction",
+   "file": "generation_cutin.json",
+   "path": [
+    "importance_sampling",
+    "targets",
+    "TTC_sw < 1 s",
+    "variance_reduction"
+   ],
+   "value": 5.85398907312162,
+   "tol_rel": 0.1
+  },
+  {
+   "label": "Replay: variants reproduced",
+   "file": "generation_cutin.json",
+   "path": [
+    "replay",
+    "reproduced"
+   ],
+   "value": 8,
+   "needs_esmini": true
+  },
+  {
+   "label": "Replay: variants run",
+   "file": "generation_cutin.json",
+   "path": [
+    "replay",
+    "n"
+   ],
+   "value": 10,
+   "needs_esmini": true
+  },
+  {
+   "label": "Replay: median |TTC error| [s]",
+   "file": "generation_cutin.json",
+   "path": [
+    "replay",
+    "ttc_abs_err_median"
+   ],
+   "value": 0.1335349268287751,
+   "tol_abs": 0.02,
+   "needs_esmini": true
+  },
+  {
+   "label": "G1 Gaussian: power at n=160",
+   "file": "power_heldout.json",
+   "path": [
+    "critical_share",
+    "G1",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "power_n160"
+   ],
+   "value": 0.055,
+   "tol_abs": 0.01
+  },
+  {
+   "label": "G1 Gaussian: events for 80 % power",
+   "file": "power_heldout.json",
+   "path": [
+    "critical_share",
+    "G1",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "n_for_80_power"
+   ],
+   "value": 9317,
+   "tol_rel": 0.1
+  },
+  {
+   "label": "G2 Gaussian: power at n=160",
+   "file": "power_heldout.json",
+   "path": [
+    "critical_share",
+    "G2",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "power_n160"
+   ],
+   "value": 0.093,
+   "tol_abs": 0.01
+  },
+  {
+   "label": "G2 Gaussian: events for 80 % power",
+   "file": "power_heldout.json",
+   "path": [
+    "critical_share",
+    "G2",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "n_for_80_power"
+   ],
+   "value": 4921,
+   "tol_rel": 0.1
+  },
+  {
+   "label": "G2 Gaussian: power at n=160",
+   "file": "power_heldout.json",
+   "path": [
+    "critical_share",
+    "G2",
+    "models",
+    "Gaussian mixture on normal scores (GMCM-style, two components)",
+    "power_n160"
+   ],
+   "value": 0.279,
+   "tol_abs": 0.01
+  },
+  {
+   "label": "G2 Gaussian: events for 80 % power",
+   "file": "power_heldout.json",
+   "path": [
+    "critical_share",
+    "G2",
+    "models",
+    "Gaussian mixture on normal scores (GMCM-style, two components)",
+    "n_for_80_power"
+   ],
+   "value": 812,
+   "tol_rel": 0.1
+  },
+  {
+   "label": "G2 Gaussian: exact binomial P",
+   "file": "power_heldout.json",
+   "path": [
+    "lambda_test",
+    "models",
+    "Gaussian copula + KDE marginals",
+    "p_value"
+   ],
+   "value": 3.19e-06,
+   "tol_rel": 0.3
+  },
+  {
+   "label": "G2 Gaussian: exact binomial P",
+   "file": "power_heldout.json",
+   "path": [
+    "lambda_test",
+    "models",
+    "Gaussian mixture on normal scores (GMCM-style, two components)",
+    "p_value"
+   ],
+   "value": 0.109,
+   "tol_rel": 0.3
+  },
+  {
+   "label": "Lambda test: hits of 16",
+   "file": "power_heldout.json",
+   "path": [
+    "lambda_test",
+    "hits"
+   ],
+   "value": 5
+  },
+  {
+   "label": "Screening threshold: precision",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "threshold",
+    "precision"
+   ],
+   "value": 0.875,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening threshold: recall",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "threshold",
+    "recall"
+   ],
+   "value": 0.5,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening pelt: precision",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "pelt",
+    "precision"
+   ],
+   "value": 0.875,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening pelt: recall",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "pelt",
+    "recall"
+   ],
+   "value": 1.0,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening discord: precision",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "discord",
+    "precision"
+   ],
+   "value": 0.8823529411764706,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening discord: recall",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "discord",
+    "recall"
+   ],
+   "value": 0.7142857142857143,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening union: precision",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "union",
+    "precision"
+   ],
+   "value": 0.8780487804878049,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening union: recall",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "union",
+    "recall"
+   ],
+   "value": 1.0,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening union_plus_gate: precision",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "union_plus_gate",
+    "precision"
+   ],
+   "value": 0.8780487804878049,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening union_plus_gate: recall",
+   "file": "fusion_gate.json",
+   "path": [
+    "scores",
+    "union_plus_gate",
+    "recall"
+   ],
+   "value": 1.0,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "Screening: smallest min TTC [s]",
+   "file": "screening/mock/tail.json",
+   "path": [
+    "top10",
+    0,
+    "min_ttc"
+   ],
+   "value": 0.4487800479874368,
+   "tol_abs": 0.02
+  },
+  {
+   "label": "POT: u",
+   "file": "screening/mock/tail.json",
+   "path": [
+    "pot",
+    "u"
+   ],
+   "value": 0.20075029343850545,
+   "tol_abs": 0.05
+  },
+  {
+   "label": "POT: n_declustered",
+   "file": "screening/mock/tail.json",
+   "path": [
+    "pot",
+    "n_declustered"
+   ],
+   "value": 16,
+   "tol_abs": 0
+  },
+  {
+   "label": "POT: shape_c",
+   "file": "screening/mock/tail.json",
+   "path": [
+    "pot",
+    "shape_c"
+   ],
+   "value": 0.6255996521685314,
+   "tol_abs": 0.05
+  },
+  {
+   "label": "DTW: events compared",
+   "file": "screening/mock/dtw_pairs.json",
+   "path": [
+    "n_events"
+   ],
+   "value": 16
+  },
+  {
+   "label": "DTW: closest pair distance",
+   "file": "screening/mock/dtw_pairs.json",
+   "path": [
+    "closest",
+    0,
+    "dtw"
+   ],
+   "value": 0.044,
+   "tol_abs": 0.01
+  }
+ ]
+}

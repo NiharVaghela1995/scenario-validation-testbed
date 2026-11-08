@@ -1,0 +1,49 @@
+{
+ "created": "2026-11-03",
+ "tolerance": {
+  "precision": 0.05,
+  "recall": 0.05
+ },
+ "ddpm_spearman_band": 0.1,
+ "ddpm_w1_gap_max": 1.5,
+ "expected": {
+  "autoencoder": {
+   "precision": 0.65,
+   "recall": 0.9285714285714286,
+   "val_mse": 0.0009730613674037158
+  },
+  "kinematic_pred_error_thr3": {
+   "precision": 0.7916666666666666,
+   "recall": 1.0
+  },
+  "ridge_pred_error_thr2": {
+   "precision": 0.9166666666666666,
+   "recall": 0.7857142857142857
+  },
+  "query_tight_cut_in_on_cut_in_logs": {
+   "precision": 0.75,
+   "recall": 1.0
+  },
+  "query_sustained_closing": {
+   "precision": 1.0,
+   "recall": 0.42857142857142855
+  },
+  "ddpm": {
+   "spearman": 0.6896734395706527,
+   "spearman_real": 0.6900029668790812,
+   "w1_gap": 0.8257584736148978
+  }
+ },
+ "changes": [
+  {
+   "date": "2026-11-05",
+   "key": "ddpm",
+   "reason": "noise schedule linear 1e-4..0.02 (abar_T 0.36) -> cosine + x0 clip (abar_T 2.4e-7); see design/evidence/ddpm_schedule_fix.txt",
+   "old": {
+    "spearman": 0.6528165992474853,
+    "spearman_real": 0.6900029668790812,
+    "w1_gap": 0.8877873691148054
+   }
+  }
+ ]
+}

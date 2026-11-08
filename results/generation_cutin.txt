@@ -1,0 +1,104 @@
+# generation_cutin
+
+## Events: n 400 (train 240, held-out 160); critical 30 (0.075); closing 0.70; all valid True
+  v_ego  {'p1': 19.59, 'p25': 25.72, 'p50': 29.44, 'p75': 32.26, 'p99': 37.98}
+  gap    {'p1': 7.96, 'p25': 16.46, 'p50': 22.34, 'p75': 30.41, 'p99': 64.16}
+  dv     {'p1': -5.32, 'p25': -0.51, 'p50': 1.71, 'p75': 3.93, 'p99': 8.02}
+  v_lat  {'p1': 0.46, 'p25': 0.73, 'p50': 0.88, 'p75': 1.05, 'p99': 1.64}
+  Spearman
+ [[ 1.     0.328  0.301 -0.027]
+ [ 0.328  1.     0.525 -0.664]
+ [ 0.301  0.525  1.    -0.349]
+ [-0.027 -0.664 -0.349  1.   ]]
+
+## Fits on the train split
+  independent marginals (1-D KDE)    train log-lik/event   -9.294  {'bandwidths': [1.5015102157151634, 4.468767042642989, 1.079103451345472, 0.08757607522367176]}
+  multivariate KDE                   train log-lik/event   -8.490  {'scott_factor': 0.5040499718056806}
+  Gaussian copula + KDE marginals    train log-lik/event   -8.697  
+  copula correlation of normal scores R
+ [[ 1.     0.316  0.258  0.026]
+ [ 0.316  1.     0.481 -0.697]
+ [ 0.258  0.481  1.    -0.358]
+ [ 0.026 -0.697 -0.358  1.   ]]
+
+## Held-out comparison (160 held-out events, 10000 samples per model)
+  reference (train events vs held-out): {'w1': [0.338, 1.592, 0.296, 0.031], 'spearman_err_mean': 0.09, 'spearman_err_max': 0.184}
+  independent marginals (1-D KDE)    LL  -9.251 ± 0.151 | W1 v_ego 0.426 gap 2.112 dv 0.301 v_lat 0.041 | rho err mean 0.394 max 0.608 | valid 0.9297 | critical 0.109
+     invalid by rule: {'gap > 0': 0.0024, 'gap at lane crossing > 0': 0.0504, 'required decel <= 8 m/s^2': 0.0193, 'all': 0.0703}
+  multivariate KDE                   LL  -8.847 ± 0.104 | W1 v_ego 0.549 gap 2.993 dv 0.439 v_lat 0.052 | rho err mean 0.080 max 0.175 | valid 0.9605 | critical 0.085
+     invalid by rule: {'gap > 0': 0.0101, '0 < v_lat <= 3 m/s': 0.0001, 'gap at lane crossing > 0': 0.0219, 'required decel <= 8 m/s^2': 0.0129, 'all': 0.0395}
+  Gaussian copula + KDE marginals    LL  -8.702 ± 0.130 | W1 v_ego 0.378 gap 1.907 dv 0.359 v_lat 0.040 | rho err mean 0.089 max 0.169 | valid 0.9838 | critical 0.082
+     invalid by rule: {'gap > 0': 0.0016, 'gap at lane crossing > 0': 0.0069, 'required decel <= 8 m/s^2': 0.0083, 'all': 0.0162}
+  best by metric: {'loglik': 'Gaussian copula + KDE marginals', 'spearman': 'multivariate KDE', 'validity': 'Gaussian copula + KDE marginals', 'w1_mean_rank': 'Gaussian copula + KDE marginals'}
+  paired LL diff Gaussian copula + KDE marginals - multivariate KDE: 0.144 ± 0.042 (z 3.4; better on 71% of events)
+  paired LL diff Gaussian copula + KDE marginals - independent marginals (1-D KDE): 0.549 ± 0.077 (z 7.1; better on 85% of events)
+  paired LL diff multivariate KDE - independent marginals (1-D KDE): 0.404 ± 0.090 (z 4.5; better on 69% of events)
+
+## Importance sampling under the Gaussian copula (n = 1000 per estimator; reference n = 1,000,000)
+  target TTC_sw < 2 s: reference p = 0.07946 ± 0.00027
+    shift mu_z {'v_ego': 0.03, 'gap': -0.27, 'dv': 1.14, 'v_lat': -0.01}
+    crude MC  : 0.08600 ± 0.00887 (86 hits)
+    IS        : 0.07946 ± 0.00408; hits 33.4%; ESS 189 of 1000 (hits-only ESS 275); w mean 0.881, median 0.3384, max 36.61
+    variance reduction x4.7: crude MC would need about 4,397 samples for the same SE
+  target TTC_sw < 1 s: reference p = 0.02107 ± 0.00014
+    shift mu_z {'v_ego': 0.03, 'gap': -0.27, 'dv': 1.14, 'v_lat': -0.01}
+    crude MC  : 0.02000 ± 0.00443 (20 hits)
+    IS        : 0.02116 ± 0.00183; hits 13.2%; ESS 189 of 1000 (hits-only ESS 118); w mean 0.881, median 0.3384, max 36.61
+    variance reduction x5.9: crude MC would need about 6,161 samples for the same SE
+
+## Replay in esmini
+  cutin_00: v 30.4 gap 17.1 dv 6.65 vlat 1.35 | intended TTC_sw 1.27 s | replay 1.16 s (switch 3.4 vs 3.30 s) | reproduced True | ACC: min gap 6.4 m, min THW 0.26 s, peak decel 10.0, collision False
+  cutin_01: v 24.2 gap 17.9 dv 6.71 vlat 0.82 | intended TTC_sw 0.54 s | replay 0.37 s (switch 4.3 vs 4.13 s) | reproduced True | ACC: min gap 4.5 m, min THW 0.26 s, peak decel 10.0, collision False
+  cutin_02: v 25.8 gap 13.7 dv 4.41 vlat 0.82 | intended TTC_sw 0.98 s | replay 0.81 s (switch 4.3 vs 4.13 s) | reproduced True | ACC: min gap 5.3 m, min THW 0.26 s, peak decel 9.4, collision False
+  cutin_03: v 27.8 gap 4.3 dv 2.69 vlat 1.50 | intended TTC_sw 0.42 s | replay 0.26 s (switch 3.3 vs 3.16 s) | reproduced True | ACC: min gap 1.1 m, min THW 0.04 s, peak decel 7.3, collision False
+  cutin_04: v 32.9 gap 8.6 dv 3.82 vlat 1.64 | intended TTC_sw 1.19 s | replay 1.04 s (switch 3.2 vs 3.07 s) | reproduced True | ACC: min gap 4.4 m, min THW 0.15 s, peak decel 8.8, collision False
+  cutin_05: v 31.8 gap 27.8 dv 3.90 vlat 0.92 | intended TTC_sw 5.23 s | replay 5.12 s (switch 4.0 vs 3.90 s) | reproduced True | ACC: min gap 18.7 m, min THW 0.64 s, peak decel 6.3, collision False
+  cutin_06: v 29.6 gap 53.0 dv 9.98 vlat 0.53 | intended TTC_sw 2.02 s | replay 1.91 s (switch 5.4 vs 5.30 s) | reproduced False | ACC: min gap 14.4 m, min THW 0.65 s, peak decel 10.0, collision False
+  cutin_07: v 30.5 gap 20.3 dv 3.87 vlat 1.11 | intended TTC_sw 3.69 s | replay 3.55 s (switch 3.7 vs 3.57 s) | reproduced True | ACC: min gap 12.7 m, min THW 0.46 s, peak decel 7.2, collision False
+  cutin_08: v 31.6 gap 28.6 dv 5.61 vlat 0.57 | intended TTC_sw 2.02 s | replay 1.89 s (switch 5.2 vs 5.08 s) | reproduced False | ACC: min gap 9.2 m, min THW 0.34 s, peak decel 10.0, collision False
+  cutin_09: v 25.0 gap 16.1 dv 3.97 vlat 1.04 | intended TTC_sw 2.36 s | replay 2.23 s (switch 3.8 vs 3.68 s) | reproduced True | ACC: min gap 8.0 m, min THW 0.37 s, peak decel 8.0, collision False
+  reproduced 8 of 10; median |TTC error| 0.13 s; median switch delay 0.12 s; ACC runs: collisions 0, decel > 8 m/s^2 in 6
+
+## Figures: ['figures/gen_cutin_marginals.png', 'figures/gen_cutin_pairs.png', 'figures/gen_cutin_validity.png']
+
+## Robustness: G1 (as above) and G2 (tail component), four models incl. t copula
+  G1: Essentially Gaussian: given v_ego, (dv, log time gap, log v_lat) is a linear-Gaussian chain (dv linear in v_ego; log(gap/v_ego) linear in dv; log v_lat linear in log(gap/v_ego); normal noise). Departures from normality come from three places: a Beta draw for ego speed, multiplying time gap by v_ego to get gap, and discarding impossible events. No tail dependence.
+    truth (n 200,000): critical 0.0741; tail dep q0.10 0.010, q0.05 0.001 | held-out: critical 10/160, tail dep q0.10 0.000
+    independent marginals (1-D KDE)    LL  -9.251 (vs Gauss cop -0.549 ± 0.077) | rho err 0.394 | valid 0.930 | critical 0.109 | tail dep q0.10 0.013 q0.05 0.000
+    multivariate KDE                   LL  -8.847 (vs Gauss cop -0.144 ± 0.042) | rho err 0.080 | valid 0.961 | critical 0.085 | tail dep q0.10 0.000 q0.05 0.000
+    Gaussian copula + KDE marginals    LL  -8.702 (reference)         | rho err 0.089 | valid 0.984 | critical 0.082 | tail dep q0.10 0.004 q0.05 0.000
+    t copula + KDE marginals           LL  -8.691 (vs Gauss cop +0.012 ± 0.007) | rho err 0.092 | valid 0.987 | critical 0.076 | tail dep q0.10 0.002 q0.05 0.000 | nu 50
+    best held-out log-lik: t copula + KDE marginals
+  G2: G1 body (92 %) plus an 8 % 'aggressive' component (before rejection): dv ~ N(6.5, 1.0), log(gap/v_ego) = log 0.38 - 0.08 (dv - 6.5) + N(0, 0.12), log v_lat ~ N(log 1.7, 0.15): small time gaps coincide with fast closing only in this tail component (the body links larger closing speed to LARGER gaps), a joint tail no Gaussian dependence has.
+    truth (n 200,000): critical 0.1224; tail dep q0.10 0.218, q0.05 0.074 | held-out: critical 18/160, tail dep q0.10 0.312
+    independent marginals (1-D KDE)    LL  -9.602 (vs Gauss cop -0.465 ± 0.061) | rho err 0.290 | valid 0.939 | critical 0.120 | tail dep q0.10 0.022 q0.05 0.000
+    multivariate KDE                   LL  -9.195 (vs Gauss cop -0.059 ± 0.047) | rho err 0.090 | valid 0.964 | critical 0.117 | tail dep q0.10 0.051 q0.05 0.004
+    Gaussian copula + KDE marginals    LL  -9.136 (reference)         | rho err 0.086 | valid 0.980 | critical 0.110 | tail dep q0.10 0.015 q0.05 0.006
+    t copula + KDE marginals           LL  -9.135 (vs Gauss cop +0.001 ± 0.012) | rho err 0.068 | valid 0.978 | critical 0.108 | tail dep q0.10 0.019 q0.05 0.002 | nu 20
+    best held-out log-lik: t copula + KDE marginals
+
+## Critical share (TTC at lane crossing < 2 s), 95 % Wilson intervals
+  G1: held-out 10/160 = 0.062 [0.034, 0.111]; truth 0.0741
+    independent marginals (1-D KDE)    0.109 [0.103, 0.116] -> vs truth: over; inside held-out interval: True
+    multivariate KDE                   0.085 [0.080, 0.091] -> vs truth: over; inside held-out interval: True
+    Gaussian copula + KDE marginals    0.082 [0.077, 0.088] -> vs truth: over; inside held-out interval: True
+    t copula + KDE marginals           0.076 [0.070, 0.081] -> vs truth: consistent; inside held-out interval: True
+  G2: held-out 18/160 = 0.113 [0.072, 0.171]; truth 0.1224
+    independent marginals (1-D KDE)    0.120 [0.114, 0.127] -> vs truth: consistent; inside held-out interval: True
+    multivariate KDE                   0.117 [0.111, 0.124] -> vs truth: consistent; inside held-out interval: True
+    Gaussian copula + KDE marginals    0.110 [0.104, 0.116] -> vs truth: under; inside held-out interval: True
+    t copula + KDE marginals           0.108 [0.102, 0.114] -> vs truth: under; inside held-out interval: True
+
+## Reject physically invalid samples before hand-over (accepted samples only)
+  G1 independent marginals (1-D KDE)    accept 0.930 | W1 all -> accepted: v_ego 0.43->0.43, gap 2.11->2.78, dv 0.30->0.23, v_lat 0.04->0.04 | critical (accepted) 0.109 | LL truncated -9.178
+  G1 multivariate KDE                   accept 0.961 | W1 all -> accepted: v_ego 0.55->0.53, gap 2.99->3.01, dv 0.44->0.35, v_lat 0.05->0.05 | critical (accepted) 0.085 | LL truncated -8.806
+  G1 Gaussian copula + KDE marginals    accept 0.984 | W1 all -> accepted: v_ego 0.38->0.38, gap 1.91->1.99, dv 0.36->0.30, v_lat 0.04->0.04 | critical (accepted) 0.082 | LL truncated -8.686
+  G1 t copula + KDE marginals           accept 0.987 | W1 all -> accepted: v_ego 0.38->0.38, gap 1.91->1.97, dv 0.35->0.31, v_lat 0.04->0.04 | critical (accepted) 0.076 | LL truncated -8.677
+  G2 independent marginals (1-D KDE)    accept 0.939 | W1 all -> accepted: v_ego 0.36->0.36, gap 1.78->1.49, dv 0.28->0.32, v_lat 0.04->0.05 | critical (accepted) 0.120 | LL truncated -9.539
+  G2 multivariate KDE                   accept 0.964 | W1 all -> accepted: v_ego 0.49->0.49, gap 1.76->1.42, dv 0.26->0.19, v_lat 0.04->0.04 | critical (accepted) 0.117 | LL truncated -9.158
+  G2 Gaussian copula + KDE marginals    accept 0.980 | W1 all -> accepted: v_ego 0.30->0.28, gap 1.78->1.59, dv 0.30->0.29, v_lat 0.05->0.05 | critical (accepted) 0.110 | LL truncated -9.116
+  G2 t copula + KDE marginals           accept 0.978 | W1 all -> accepted: v_ego 0.30->0.27, gap 1.82->1.61, dv 0.30->0.29, v_lat 0.05->0.05 | critical (accepted) 0.108 | LL truncated -9.113
+
+## Tail models on G2 (same metrics as the robustness table)
+  rotated Clayton (gap x dv) + Gaussian rest           LL -9.194 (vs Gauss cop -0.058 ± 0.021) | critical 0.129 [0.123, 0.136] over (truth 0.122) | tail dep q0.10 0.041 (truth 0.218) | kept 0.966 | {'theta': 0.0010000000000000002, 'lower_tail_dependence': 9.33263618503366e-302}
+  Gaussian mixture on normal scores (GMCM-style, two components) LL -9.132 (vs Gauss cop +0.005 ± 0.048) | critical 0.093 [0.087, 0.099] under (truth 0.122) | tail dep q0.10 0.165 (truth 0.218) | kept 0.989 | {'weights': [0.801, 0.199], 'means': [[-0.0, 0.23, -0.02, -0.24], [-0.0, -0.77, 0.06, 1.06]]}

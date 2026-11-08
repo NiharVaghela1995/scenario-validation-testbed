@@ -1,0 +1,31 @@
+{
+ "data": "synthetic test bed only",
+ "gate": "TTC < 4.0 s or THW < 0.6 s",
+ "scores": {
+  "threshold": {
+   "precision": 0.875,
+   "recall": 0.5,
+   "flags": 8
+  },
+  "pelt": {
+   "precision": 0.875,
+   "recall": 1.0,
+   "flags": 16
+  },
+  "discord": {
+   "precision": 0.8823529411764706,
+   "recall": 0.7142857142857143,
+   "flags": 17
+  },
+  "union": {
+   "precision": 0.8780487804878049,
+   "recall": 1.0,
+   "flags": 41
+  },
+  "union_plus_gate": {
+   "precision": 0.8780487804878049,
+   "recall": 1.0,
+   "flags": 41
+  }
+ }
+}

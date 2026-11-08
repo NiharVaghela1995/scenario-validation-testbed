@@ -1,0 +1,23 @@
+{
+ "created": "2026-11-03",
+ "data": "synthetic.make_segments(n_segments=30, seed=7)",
+ "rule": "any overlap \u00b11 s",
+ "tolerance": 0.02,
+ "expected": {
+  "threshold": {
+   "precision": 0.875,
+   "recall": 0.5,
+   "flags": 8
+  },
+  "pelt": {
+   "precision": 0.875,
+   "recall": 1.0,
+   "flags": 16
+  },
+  "discord": {
+   "precision": 0.8824,
+   "recall": 0.7143,
+   "flags": 17
+  }
+ }
+}

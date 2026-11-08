@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+critical_events/out/
+data/raw/
+results/screening/
+results/replay_cutin/
+results/pilot/
+results/*.log

@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this test bed, please cite it as below."
+title: "Scenario validation test bed: critical-event screening and tail fidelity of generated cut-in scenarios"
+type: software
+authors:
+  - family-names: Vaghela
+    given-names: Nihar
+license: MIT
+version: 1.0.0
+date-released: 2026-11-08
+keywords:
+  - scenario-based testing
+  - critical events
+  - copula
+  - tail dependence
+  - importance sampling

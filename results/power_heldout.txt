@@ -1,0 +1,24 @@
+Critical share: held-out events needed to reject the model at 80 % power (two-sided 5 %, normal approximation)
+
+G1: truth 0.0741; 95 % band of an observed share at n = 160: normal [0.033, 0.115], exact binomial [0.037, 0.119]
+  independent marginals (1-D KDE)                      share 0.1092  power at n=160 0.262  n for 80 % power      561
+  multivariate KDE                                     share 0.0851  power at n=160 0.064  n for 80 % power     4878
+  Gaussian copula + KDE marginals                      share 0.0819  power at n=160 0.055  n for 80 % power     9317
+  t copula + KDE marginals                             share 0.0755  power at n=160 0.049  n for 80 % power   263997
+
+G2: truth 0.1224; 95 % band of an observed share at n = 160: normal [0.072, 0.173], exact binomial [0.075, 0.175]
+  independent marginals (1-D KDE)                      share 0.1204  power at n=160 0.052  n for 80 % power   212063
+  multivariate KDE                                     share 0.1173  power at n=160 0.059  n for 80 % power    32460
+  Gaussian copula + KDE marginals                      share 0.1097  power at n=160 0.093  n for 80 % power     4921
+  t copula + KDE marginals                             share 0.1076  power at n=160 0.107  n for 80 % power     3594
+  rotated Clayton (gap x dv) + Gaussian rest           share 0.1293  power at n=160 0.052  n for 80 % power    18356
+  Gaussian mixture on normal scores (GMCM-style, two components) share 0.0927  power at n=160 0.279  n for 80 % power      812
+
+Tail metric lambda(0.10) on the G2 held-out set (exact binomial, not an approximation)
+  conditioning events 16, hits 5 (lambda 0.3125)
+  independent marginals (1-D KDE)                      lambda 0.022  P(>= 5 of 16) = 1.98e-05
+  multivariate KDE                                     lambda 0.051  P(>= 5 of 16) = 9.24e-04
+  Gaussian copula + KDE marginals                      lambda 0.015  P(>= 5 of 16) = 3.19e-06
+  t copula + KDE marginals                             lambda 0.019  P(>= 5 of 16) = 1.01e-05
+  rotated Clayton (gap x dv) + Gaussian rest           lambda 0.041  P(>= 5 of 16) = 3.60e-04
+  Gaussian mixture on normal scores (GMCM-style, two components) lambda 0.165  P(>= 5 of 16) = 1.09e-01

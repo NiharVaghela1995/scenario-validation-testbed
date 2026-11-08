@@ -1,0 +1,15 @@
+# Tested on Python 3.12 (scipy 1.18 requires >= 3.12). CPU only. Install with pip.
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.1.0
+matplotlib==3.11.2
+ruptures==1.1.10
+stumpy==1.14.1
+numba==0.68.1
+llvmlite==0.50.0
+scenariogeneration==0.16.7
+scikit-learn==1.9.1
+torch==2.15.0+cpu
+pyarrow==26.0.1
+pytest==9.2.0

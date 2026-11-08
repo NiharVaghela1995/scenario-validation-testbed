@@ -1,0 +1,104 @@
+{
+ "n_heldout": 160,
+ "critical_share": {
+  "G1": {
+   "truth": 0.074075,
+   "band_exact": [
+    0.0375,
+    0.11875
+   ],
+   "models": {
+    "independent marginals (1-D KDE)": {
+     "share": 0.10917500268903947,
+     "power_n160": 0.261565715759386,
+     "n_for_80_power": 561.387952277085
+    },
+    "multivariate KDE": {
+     "share": 0.08505986465382613,
+     "power_n160": 0.06412768143611744,
+     "n_for_80_power": 4877.680567246584
+    },
+    "Gaussian copula + KDE marginals": {
+     "share": 0.08192722097987395,
+     "power_n160": 0.05465575704150044,
+     "n_for_80_power": 9317.237593086054
+    },
+    "t copula + KDE marginals": {
+     "share": 0.07551185890938578,
+     "power_n160": 0.04854062202213815,
+     "n_for_80_power": 263997.12082605535
+    }
+   }
+  },
+  "G2": {
+   "truth": 0.12238,
+   "band_exact": [
+    0.075,
+    0.175
+   ],
+   "models": {
+    "independent marginals (1-D KDE)": {
+     "share": 0.12039599744517777,
+     "power_n160": 0.05231519422279178,
+     "n_for_80_power": 212062.95786564559
+    },
+    "multivariate KDE": {
+     "share": 0.11734799750985682,
+     "power_n160": 0.058815516787586355,
+     "n_for_80_power": 32460.352724159
+    },
+    "Gaussian copula + KDE marginals": {
+     "share": 0.10971626862625025,
+     "power_n160": 0.09292862081296216,
+     "n_for_80_power": 4921.21890021907
+    },
+    "t copula + KDE marginals": {
+     "share": 0.10764669801676549,
+     "power_n160": 0.10712495096870914,
+     "n_for_80_power": 3594.141036615721
+    },
+    "rotated Clayton (gap x dv) + Gaussian rest": {
+     "share": 0.12926930242185883,
+     "power_n160": 0.052413740641048534,
+     "n_for_80_power": 18355.635435633896
+    },
+    "Gaussian mixture on normal scores (GMCM-style, two components)": {
+     "share": 0.09274805299888743,
+     "power_n160": 0.27921526732207513,
+     "n_for_80_power": 811.9684371044888
+    }
+   }
+  }
+ },
+ "lambda_test": {
+  "conditioning": 16,
+  "hits": 5,
+  "heldout_lambda": 0.3125,
+  "models": {
+   "independent marginals (1-D KDE)": {
+    "lambda": 0.022340425531914895,
+    "p_value": 1.977934721242408e-05
+   },
+   "multivariate KDE": {
+    "lambda": 0.0508298755186722,
+    "p_value": 0.0009235962519796397
+   },
+   "Gaussian copula + KDE marginals": {
+    "lambda": 0.015306122448979591,
+    "p_value": 3.18711126565092e-06
+   },
+   "t copula + KDE marginals": {
+    "lambda": 0.01940755873340143,
+    "p_value": 1.0056102498162003e-05
+   },
+   "rotated Clayton (gap x dv) + Gaussian rest": {
+    "lambda": 0.04136504653567735,
+    "p_value": 0.0003603776124630454
+   },
+   "Gaussian mixture on normal scores (GMCM-style, two components)": {
+    "lambda": 0.16481294236602628,
+    "p_value": 0.1092290946094063
+   }
+  }
+ }
+}
