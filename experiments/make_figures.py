@@ -121,7 +121,7 @@ ax.invert_yaxis()
 ax.set_xlim(0, 0.45)
 ax.grid(axis="y", visible=False)
 ax.set_xlabel(f"λ(0.10);  P = exact binomial P(≥ {LT['hits']} of {LT['conditioning']} | model)")
-ax.set_title("Only the mixture is not rejected by the tail test on 160 events (G2)")
+ax.set_title("Of these six models, only the mixture passes the tail test (G2)")
 save(fig, "fig3_lambda_corner")
 
 # 4 power: two panels, no dual axis

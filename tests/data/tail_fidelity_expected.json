@@ -1,0 +1,58 @@
+{
+ "truth": {
+  "critical_share": 0.12238,
+  "lambda": 0.2182
+ },
+ "Independent": {
+  "loglik": -9.601581039706963,
+  "lambda": 0.022340425531914895,
+  "critical_share": 0.12039599744517777
+ },
+ "Multivariate KDE": {
+  "loglik": -9.195255965204439,
+  "lambda": 0.0508298755186722,
+  "critical_share": 0.11734799750985682
+ },
+ "Gaussian copula": {
+  "loglik": -9.136363422403127,
+  "lambda": 0.015306122448979591,
+  "critical_share": 0.10971626862625025
+ },
+ "t copula": {
+  "loglik": -9.135269307265983,
+  "lambda": 0.01940755873340143,
+  "critical_share": 0.10764669801676549
+ },
+ "Rotated Clayton": {
+  "loglik": -9.193926984853181,
+  "lambda": 0.04136504653567735,
+  "critical_share": 0.12926930242185883
+ },
+ "Mixture copula": {
+  "loglik": -9.131507327069892,
+  "lambda": 0.16481294236602628,
+  "critical_share": 0.09274805299888743
+ },
+ "Vine copula (AIC)": {
+  "loglik": -9.182982079137265,
+  "lambda": 0.034552845528455285,
+  "critical_share": 0.0949959316517494
+ },
+ "Conditional extremes": {
+  "loglik": -9.139000089343138,
+  "lambda": 0.14666666666666667,
+  "critical_share": 0.10707692307692308
+ },
+ "Normalizing flow": {
+  "loglik": -9.58915272013537,
+  "lambda": 0.08056394763343404,
+  "critical_share": 0.07508566821205402
+ },
+ "importance_sampling": {
+  "estimate": 0.0794604345258646,
+  "se": 0.004078602792663081,
+  "ess": 188.99988177312798,
+  "reference": 0.079462,
+  "crude": 0.086
+ }
+}

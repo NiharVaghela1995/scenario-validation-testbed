@@ -1,0 +1,11 @@
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+matplotlib==3.10.9
+torch==2.12.0
+pyvinecopulib==0.7.6
+# to run the notebook test
+nbclient==0.11.0
+nbformat==5.11.1
+ipykernel==7.3.0
+pytest==8.3.5

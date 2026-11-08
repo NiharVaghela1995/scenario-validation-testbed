@@ -57,7 +57,7 @@ On G2, the Gaussian copula and the mixture model are level on held-out log-likel
 
 ### A direct tail test does
 
-Of the 160 held-out G2 events, 16 fall in the conditioning region and 5 of those are joint extremes. An exact binomial test asks how likely 5 or more of 16 would be under each model. Only the mixture is not rejected (P = 0.11). The other five give P below 0.001.
+Of the 160 held-out G2 events, 16 fall in the conditioning region and 5 of those are joint extremes. An exact binomial test asks how likely 5 or more of 16 would be under each model. Of the six models in this repository's generation chain, only the mixture is not rejected (P = 0.11). The other five give P below 0.001.
 
 ![Tail dependence per model with exact binomial P values. Illustrative (synthetic).](figures/fig3_lambda_corner.png)
 
@@ -65,7 +65,7 @@ Of the 160 held-out G2 events, 16 fall in the conditioning region and 5 of those
 
 ### The aggregate check is underpowered
 
-A check on the share of critical events is the obvious alternative. At 160 held-out events its power on G2 ranges from 5 % to 28 %. Reaching 80 % would take between 812 and 212,063 events, depending on the model. These use a normal approximation.
+A check on the share of critical events is the obvious alternative. At 160 held-out events its power on G2 ranges from 5 % to 28 % across the six models. Reaching 80 % would take between 812 and 212,063 events, depending on the model. These use a normal approximation.
 
 ![Power of a critical-share check at 160 events, and events needed for 80 % power. Illustrative (synthetic).](figures/fig4_power.png)
 
@@ -84,6 +84,10 @@ Ten sampled variants were replayed open-loop in esmini. Eight kept their intende
 ![Intended against replayed TTC for ten variants. Illustrative (synthetic), simulator replay.](figures/fig6_replay.png)
 
 *Illustrative (synthetic), simulator replay.*
+
+### Nine models in the companion notebook
+
+[`notebooks/tail_fidelity.ipynb`](notebooks/tail_fidelity.ipynb) repeats the comparison with three more models: a vine copula, a conditional-extremes model and a small normalizing flow. They exist only in the notebook, and the numbers for the shared six match. Two of its results widen the picture above. A second model passes the tail test, with 7 of 9 rejected and the conditional-extremes model at P = 0.07. The flow's critical-share check has 60 % power at 160 events and needs 281 events for 80 %. Illustrative (synthetic).
 
 ## Limits
 
@@ -123,13 +127,13 @@ pilot/                real-data loaders, screening, NGSIM download
 data/                 synthetic cut-ins and instructions for real datasets
 results/              computed numbers (JSON and text)
 figures/              README figures and generation diagnostics
-notebooks/            companion notebooks, once they exist
+notebooks/            companion notebook, nine-model comparison (own requirements)
 tests/                unit, regression, loader and reproduction tests
 ```
 
 ## Tests
 
-`pytest -q tests/` covers the detectors and signals, the regression set, the loaders, and a reproduction test that recomputes everything in a temporary folder and checks the 67 published numbers against `tests/data/published_numbers.json`. Replay numbers are skipped when esmini is absent, which includes the GitHub Actions workflow in `.github/workflows/ci.yml`.
+`pytest -q tests/` covers the detectors and signals, the regression set, the loaders, and a reproduction test that recomputes everything in a temporary folder and checks the 67 published numbers against `tests/data/published_numbers.json`. Replay numbers are skipped when esmini is absent, which includes the GitHub Actions workflow in `.github/workflows/ci.yml`. The notebook test needs its own environment (see [`notebooks/README.md`](notebooks/README.md)), is skipped in the main one, and runs separately in CI.
 
 ## Licence and citation
 
