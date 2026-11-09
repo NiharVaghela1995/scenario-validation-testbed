@@ -1,13 +1,13 @@
 # Scenario validation test bed
 
+By Nihar Vaghela · M.Sc. Electromobility (ACES), FAU Erlangen-Nürnberg · [LinkedIn](https://www.linkedin.com/in/niharvaghela)
+
 Small, seeded, CPU-only code for two questions that come up when testing automated driving with scenarios:
 
 1. **Screening.** Which moments in a long driving log are worth a human look?
 2. **Generation.** If a model generates cut-in scenarios, does it keep the rare, dangerous combinations, and how many real events would you need to find out?
 
 Everything below runs on **synthetic data with a known truth**, so each method can be checked against the right answer. These numbers say how the methods behave on designed generators. They say nothing about real traffic.
-
-**Website:** not published yet, link to be added. **Slides:** to be linked from the website.
 
 ## Reproduce
 
@@ -138,3 +138,7 @@ tests/                unit, regression, loader and reproduction tests
 ## Licence and citation
 
 Code is under the [MIT licence](LICENSE). Figures and text are under [CC BY 4.0](LICENSE-content). See [`CITATION.cff`](CITATION.cff) to cite this work.
+
+## How this was built
+
+I designed the methods, experiments and checks; the implementation was done with AI coding assistance under my direction. Every published number is recomputed and compared by the test suite (`make reproduce`).
