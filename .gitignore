@@ -9,3 +9,14 @@ results/screening/
 results/replay_cutin/
 results/pilot/
 results/*.log
+
+# highD is licensed for non-commercial use without redistribution. The data lives outside the repository
+# (default ~/datasets/highD, set HIGHD_DATA); these patterns stop an accidental copy or per-vehicle extract from entering it.
+highD/
+datasets/highD/
+*_tracks.csv
+*_tracksMeta.csv
+*_recordingMeta.csv
+*_highway.png
+cutins.parquet
+screening_match.parquet

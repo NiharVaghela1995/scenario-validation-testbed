@@ -7,7 +7,7 @@ Small, seeded, CPU-only code for two questions that come up when testing automat
 1. **Screening.** Which moments in a long driving log are worth a human look?
 2. **Generation.** If a model generates cut-in scenarios, does it keep the rare, dangerous combinations, and how many real events would you need to find out?
 
-Everything below runs on **synthetic data with a known truth**, so each method can be checked against the right answer. These numbers say how the methods behave on designed generators. They say nothing about real traffic.
+The results below run on **synthetic data with a known truth**, so each method can be checked against the right answer. The one real-data study, on highD cut-ins, is reported separately in [`docs/HIGHD_PILOT.md`](docs/HIGHD_PILOT.md). These numbers say how the methods behave on designed generators. They say nothing about real traffic.
 
 ## Reproduce
 
@@ -95,7 +95,7 @@ Ten sampled variants were replayed open-loop in esmini. Eight kept their intende
 - Each result is one seeded run. The P values and power figures describe this setup and are not a general ranking of the models.
 - The mixture is a GMCM-style approximation (a Gaussian mixture on normal scores), not the full GMCM estimator.
 - Replay is a spot-check of 10 variants with a constant-speed ego vehicle, in one simulator.
-- The real-data code in `pilot/` is a working path, not a study. No real-data results are published here.
+- The synthetic results above do not depend on real data. The only real-data results published here are the aggregated highD pilot in [`docs/HIGHD_PILOT.md`](docs/HIGHD_PILOT.md), with its own limits.
 
 ## Real data
 
@@ -107,13 +107,25 @@ No third-party data is stored in this repository. See [`data/README.md`](data/RE
 | highD | Apply and download it yourself under the dataset's licence | `load_highd` |
 | Argoverse 2 Sensor | Download it yourself under the dataset's licence | `load_av2` |
 
-The NGSIM path has been run end to end on one minute of US-101. The highD and Argoverse 2 loaders have only been tested on synthetic files written in each dataset's documented format, so expect to adjust them on first contact with the real files.
+The NGSIM path has been run end to end on one minute of US-101. The highD loader has been run on all 60 recordings. The Argoverse 2 loader has only been tested on synthetic files written in its documented format, so expect to adjust it on first contact with the real files.
 
 ```bash
 python pilot/screening.py --dataset ngsim --path data/raw/ngsim/us-101.csv --location us-101 --out results/pilot/us-101.csv
 ```
 
 Candidates from this script are a queue for human review, not labelled events. Check the dataset's terms before publishing anything derived from it.
+
+## highD pilot
+
+[`docs/HIGHD_PILOT.md`](docs/HIGHD_PILOT.md) applies the screening and tail checks to 8,191 real highD cut-ins. It finds 5 joint extremes among 820 conditioning events, λ(0.10) = 0.006, below both the Gaussian copula (0.066) and the two-component mixture (0.039). Every number there is generated from `results/highd/`.
+
+**Access.** highD is available on application for non-commercial use at <https://www.highd-dataset.com/>. It is not included here and cannot be redistributed. Download it yourself, then set `HIGHD_DATA` to the folder holding `01_tracks.csv` and the other files (default `~/datasets/highD/data`).
+
+**Licence note.** This repository holds code, the report, aggregated plots and statistics only. No raw data and no per-vehicle extract are stored or shared: per-event tables are written outside the repository, and the code refuses a path inside it. The MIT and CC BY 4.0 licences of this repository grant no rights in highD, and any reuse of the highD-derived results remains subject to highD's terms.
+
+**Citation.** R. Krajewski, J. Bock, L. Kloeker and L. Eckstein, "The highD Dataset: A Drone Dataset of Naturalistic Vehicle Trajectories on German Highways for Validation of Highly Automated Driving Systems," ITSC 2018, pp. 2118–2125, doi:10.1109/ITSC.2018.8569552.
+
+`tests/test_highd.py` skips automatically when the data path is missing, so the synthetic tests and CI do not need highD.
 
 ## Structure
 
@@ -122,10 +134,12 @@ reproduce.py          one command: results, figures, comparison with published n
 critical_events/      signals, detectors, fusion and gate, DTW similarity, POT tail fit,
                       cut-in generators and models (cutin_chain.py), synthetic and esmini logs,
                       CPU-sized learned and query-based detectors (eras.py)
-experiments/          generation chain, power analysis, fusion scores, figures, number check
-pilot/                real-data loaders, screening, NGSIM download
+experiments/          generation chain, power analysis, fusion scores, figures, number check,
+                      highD tail fidelity, power, figures and report (highd_*.py)
+pilot/                real-data loaders, screening, NGSIM download, highD cut-in extraction
+docs/                 highD pilot report
 data/                 synthetic cut-ins and instructions for real datasets
-results/              computed numbers (JSON and text)
+results/              computed numbers (JSON and text); results/highd/ holds aggregates only
 figures/              README figures and generation diagnostics
 notebooks/            companion notebook, nine-model comparison (own requirements)
 tests/                unit, regression, loader and reproduction tests
