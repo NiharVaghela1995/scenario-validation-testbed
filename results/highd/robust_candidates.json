@@ -1,0 +1,20 @@
+{
+ "candidates": 10827,
+ "primary": 8191,
+ "recordings_with_auxiliary_lane": 3,
+ "auxiliary_lanes_by_recording": {
+  "58": [
+   2
+  ],
+  "59": [
+   2
+  ],
+  "60": [
+   2
+  ]
+ },
+ "primary_from_aux_lane": 39,
+ "primary_into_aux_lane": 0,
+ "primary_leftward": 2720,
+ "reproduces_pilot_table": true
+}

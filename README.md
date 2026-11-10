@@ -117,7 +117,7 @@ Candidates from this script are a queue for human review, not labelled events. C
 
 ## highD pilot
 
-[`docs/HIGHD_PILOT.md`](docs/HIGHD_PILOT.md) applies the screening and tail checks to 8,191 real highD cut-ins. It finds 5 joint extremes among 820 conditioning events, λ(0.10) = 0.006, below both the Gaussian copula (0.066) and the two-component mixture (0.039). Every number there is generated from `results/highd/`.
+[`docs/HIGHD_PILOT.md`](docs/HIGHD_PILOT.md) applies the screening and tail checks to 8,191 real highD cut-ins. It finds 5 joint extremes among 820 conditioning events, λ(0.10) = 0.006, below both the Gaussian copula (0.066) and the two-component mixture (0.039). [`docs/HIGHD_ROBUSTNESS.md`](docs/HIGHD_ROBUSTNESS.md) tests this against a pre-committed [plan](docs/HIGHD_ANALYSIS_PLAN.md): it holds for the pooled corner of short headway and fast closing, but not for truck followers or the pair THW × lateral speed. Every number is generated from `results/highd/`.
 
 **Access.** highD is available on application for non-commercial use at <https://www.highd-dataset.com/>. It is not included here and cannot be redistributed. Download it yourself, then set `HIGHD_DATA` to the folder holding `01_tracks.csv` and the other files (default `~/datasets/highD/data`).
 

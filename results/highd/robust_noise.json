@@ -1,0 +1,293 @@
+{
+ "events": 8191,
+ "monte_carlo_draws": 200,
+ "bootstrap_replicates": 400,
+ "baseline_counts": {
+  "ttc_lt_4": 27,
+  "ttc_lt_2": 0,
+  "thw_lt_0_6": 1162,
+  "drac_gt_2": 3
+ },
+ "levels": {
+  "0.1/0.1": {
+   "sigma_pos_m": 0.1,
+   "sigma_v_ms": 0.1,
+   "critical_sets": {
+    "ttc_lt_4": {
+     "count_mean": 27.205,
+     "count_interval_95": [
+      24.0,
+      30.0
+     ],
+     "jaccard_mean": 0.9097950976908499,
+     "jaccard_interval_95": [
+      0.8214285714285714,
+      1.0
+     ]
+    },
+    "ttc_lt_2": {
+     "count_mean": 0.045,
+     "count_interval_95": [
+      0.0,
+      1.0
+     ],
+     "jaccard_mean": null,
+     "jaccard_interval_95": null
+    },
+    "thw_lt_0_6": {
+     "count_mean": 1162.8,
+     "count_interval_95": [
+      1154.0,
+      1171.025
+     ],
+     "jaccard_mean": 0.9759801096411923,
+     "jaccard_interval_95": [
+      0.9679054054054054,
+      0.9821630282547801
+     ]
+    },
+    "drac_gt_2": {
+     "count_mean": 2.575,
+     "count_interval_95": [
+      2.0,
+      3.0
+     ],
+     "jaccard_mean": 0.8445833333333332,
+     "jaccard_interval_95": [
+      0.6666666666666666,
+      1.0
+     ]
+    }
+   },
+   "delta_gaussian": -0.0585333338177408,
+   "ci_delta_gaussian": [
+    -0.06865738967604355,
+    -0.04900391586686833
+   ],
+   "verdict_gaussian": "holds",
+   "lam_gaussian_mean": 0.06538574999999999,
+   "delta_k2": -0.03263258381774079,
+   "ci_delta_k2": [
+    -0.04081268931857903,
+    -0.023730225345085648
+   ],
+   "verdict_k2": "holds",
+   "lam_k2_mean": 0.039485,
+   "lam_empirical_mean": 0.006852416182259203,
+   "ci_lam_empirical": [
+    0.0022953670561221043,
+    0.013969917149014915
+   ]
+  },
+  "0.3/0.3": {
+   "sigma_pos_m": 0.3,
+   "sigma_v_ms": 0.3,
+   "critical_sets": {
+    "ttc_lt_4": {
+     "count_mean": 30.68,
+     "count_interval_95": [
+      26.0,
+      36.0
+     ],
+     "jaccard_mean": 0.7212228354636485,
+     "jaccard_interval_95": [
+      0.5945945945945946,
+      0.84375
+     ]
+    },
+    "ttc_lt_2": {
+     "count_mean": 0.445,
+     "count_interval_95": [
+      0.0,
+      2.0
+     ],
+     "jaccard_mean": null,
+     "jaccard_interval_95": null
+    },
+    "thw_lt_0_6": {
+     "count_mean": 1168.48,
+     "count_interval_95": [
+      1154.0,
+      1184.025
+     ],
+     "jaccard_mean": 0.932163290464587,
+     "jaccard_interval_95": [
+      0.9188507947928294,
+      0.9451066657214306
+     ]
+    },
+    "drac_gt_2": {
+     "count_mean": 3.02,
+     "count_interval_95": [
+      2.0,
+      5.0
+     ],
+     "jaccard_mean": 0.7121666666666667,
+     "jaccard_interval_95": [
+      0.3983333333333334,
+      1.0
+     ]
+    }
+   },
+   "delta_gaussian": -0.05914943895558834,
+   "ci_delta_gaussian": [
+    -0.06941280854183636,
+    -0.049832659712098756
+   ],
+   "verdict_gaussian": "holds",
+   "lam_gaussian_mean": 0.06612925,
+   "delta_k2": -0.03326393895558834,
+   "ci_delta_k2": [
+    -0.041988825380727,
+    -0.02592491372119696
+   ],
+   "verdict_k2": "holds",
+   "lam_k2_mean": 0.04024375,
+   "lam_empirical_mean": 0.00697981104441166,
+   "ci_lam_empirical": [
+    0.0024536136465659135,
+    0.012579409455376049
+   ]
+  },
+  "0.5/0.5": {
+   "sigma_pos_m": 0.5,
+   "sigma_v_ms": 0.5,
+   "critical_sets": {
+    "ttc_lt_4": {
+     "count_mean": 36.125,
+     "count_interval_95": [
+      28.975,
+      44.0
+     ],
+     "jaccard_mean": 0.553494095184543,
+     "jaccard_interval_95": [
+      0.43478260869565216,
+      0.6766640866873066
+     ]
+    },
+    "ttc_lt_2": {
+     "count_mean": 1.045,
+     "count_interval_95": [
+      0.0,
+      3.0
+     ],
+     "jaccard_mean": null,
+     "jaccard_interval_95": null
+    },
+    "thw_lt_0_6": {
+     "count_mean": 1171.825,
+     "count_interval_95": [
+      1152.0,
+      1189.0
+     ],
+     "jaccard_mean": 0.8942100600391165,
+     "jaccard_interval_95": [
+      0.8800103141859728,
+      0.9083693209746506
+     ]
+    },
+    "drac_gt_2": {
+     "count_mean": 3.32,
+     "count_interval_95": [
+      1.0,
+      6.0
+     ],
+     "jaccard_mean": 0.5914761904761905,
+     "jaccard_interval_95": [
+      0.2,
+      1.0
+     ]
+    }
+   },
+   "delta_gaussian": -0.05966799005947905,
+   "ci_delta_gaussian": [
+    -0.06871727094063432,
+    -0.05057081185333091
+   ],
+   "verdict_gaussian": "holds",
+   "lam_gaussian_mean": 0.06678325,
+   "delta_k2": -0.034657990059479046,
+   "ci_delta_k2": [
+    -0.043655641473910704,
+    -0.02632095454335546
+   ],
+   "verdict_k2": "holds",
+   "lam_k2_mean": 0.041773250000000005,
+   "lam_empirical_mean": 0.007115259940520948,
+   "ci_lam_empirical": [
+    0.0023086797098170837,
+    0.013250748712937566
+   ]
+  },
+  "0.5/1.0": {
+   "sigma_pos_m": 0.5,
+   "sigma_v_ms": 1.0,
+   "critical_sets": {
+    "ttc_lt_4": {
+     "count_mean": 58.825,
+     "count_interval_95": [
+      48.0,
+      70.025
+     ],
+     "jaccard_mean": 0.31397573363090947,
+     "jaccard_interval_95": [
+      0.24230113636363637,
+      0.39294950738916257
+     ]
+    },
+    "ttc_lt_2": {
+     "count_mean": 2.91,
+     "count_interval_95": [
+      0.0,
+      6.025000000000006
+     ],
+     "jaccard_mean": null,
+     "jaccard_interval_95": null
+    },
+    "thw_lt_0_6": {
+     "count_mean": 1175.735,
+     "count_interval_95": [
+      1157.0,
+      1198.025
+     ],
+     "jaccard_mean": 0.8747939103013297,
+     "jaccard_interval_95": [
+      0.8585951897327385,
+      0.8916979524912194
+     ]
+    },
+    "drac_gt_2": {
+     "count_mean": 4.515,
+     "count_interval_95": [
+      1.0,
+      8.0
+     ],
+     "jaccard_mean": 0.3805634920634921,
+     "jaccard_interval_95": [
+      0.0,
+      0.75
+     ]
+    }
+   },
+   "delta_gaussian": -0.059233831727791834,
+   "ci_delta_gaussian": [
+    -0.06922430198765459,
+    -0.04881913764077558
+   ],
+   "verdict_gaussian": "holds",
+   "lam_gaussian_mean": 0.068841,
+   "delta_k2": -0.03707083172779184,
+   "ci_delta_k2": [
+    -0.046100560173514535,
+    -0.028118915886253752
+   ],
+   "verdict_k2": "holds",
+   "lam_k2_mean": 0.046678,
+   "lam_empirical_mean": 0.009607168272208167,
+   "ci_lam_empirical": [
+    0.003590382145967968,
+    0.016490699125812112
+   ]
+  }
+ }
+}

@@ -155,13 +155,13 @@ def extract_recording(rec, data):
     return pd.DataFrame(rows), count, gaps_check, float(info.duration), int(info.numVehicles)
 
 
-def _manoeuvre_start(c, c_pos, fo, f_pos, i, f_c, hz):
+def _manoeuvre_start(c, c_pos, fo, f_pos, i, f_c, hz, v_lat_start=V_LAT_START):
     out = dict(v_lat_cross=float(abs(c["yVelocity"][i])), t_manoeuvre=np.nan, v_lat_mean=np.nan, v_ego0=np.nan, gap0=np.nan,
                dv0=np.nan)
     n_back, n_cap = int(round(hz)), int(round(T0_MAX_S * hz))
     side = np.sign(c["y"][i] - c["y"][i - n_back])
     k = i
-    while k > 0 and i - k < n_cap and side * c["yVelocity"][k - 1] > V_LAT_START:
+    while k > 0 and i - k < n_cap and side * c["yVelocity"][k - 1] > v_lat_start:
         k -= 1
     if k == 0 or i - k >= n_cap:
         return out
