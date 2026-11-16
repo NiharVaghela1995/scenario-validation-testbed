@@ -7,7 +7,9 @@ Event parameters, taken at t0, the instant the cutting-in vehicle begins to move
     v_lat  [m/s]  the cutter's lateral speed; lane change duration T_lc = LANE_W / v_lat
 Half-way through the manoeuvre, at T_lc / 2 (sinusoidal lateral path), the centre of the cutting-in vehicle enters the ego lane. Assuming constant
 speeds until then, the gap at that moment is gap_sw = gap - dv * T_lc / 2 and the criticality measure is
-TTC_sw = gap_sw / dv (dv > 0). An event is CRITICAL if TTC_sw < TTC_CRIT (2 s, the UN R157 cut-in line).
+TTC_sw = gap_sw / dv (dv > 0). An event is CRITICAL if TTC_sw < TTC_CRIT (2 s). This line is a design choice of this
+test bed. It equals the danger value of UN R157's cut-in driver model (Annex 4 App. 3, 2021 text, p. 44), which is not
+a pass criterion: R157's cut-in requirement (para. 5.2.5.2) is no collision under its stated conditions.
 
 generate_events: a seeded, deliberately non-Gaussian generator (conditional structure, rejection of physically
 impossible events), standing in for mined cut-ins. It is NOT one of the fitted model families, so no model is right
