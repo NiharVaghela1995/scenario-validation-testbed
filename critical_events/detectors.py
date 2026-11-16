@@ -1,6 +1,7 @@
 """Three detectors that turn a series into flagged intervals [t0, t1] (seconds).
 
-(a) threshold   TTC < TTC_THR s (default 3.0 s: an ASSUMPTION; UN R157 uses 2 s for cut-ins,
+(a) threshold   TTC < TTC_THR s (default 3.0 s: an ASSUMPTION; UN R157's cut-in driver model uses 2 s as a danger value, not as a
+                pass criterion,
                 the literature uses 1.5-4 s). Runs shorter than MIN_DUR are
                 dropped, runs closer than MERGE_GAP are merged.
 (b) pelt        ruptures.Pelt(model="l2", min_size, jump=1) on the 1/TTC signal; predict(pen=...).
