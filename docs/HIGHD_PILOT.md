@@ -28,7 +28,7 @@ Lane-change counts equal highD's metadata (13,949). THW, TTC and DRAC at f_c com
 
 ## Surrogate measures at cut-in
 
-Only 30.5 % of the cut-ins are closing at the moment of crossing. Median THW is 1.13 s and median gap 30 m. TTC is below 4 s in 27 cut-ins, below 3 s in 7 and below 2 s in 0. DRAC exceeds 2 m/s² in 3 and 4 m/s² in 0. The share of cut-ins with TTC below the 2 s UN R157 line is therefore zero, with a one-sided 95 % upper bound of 3.66e-04. THW is short much more often: below 0.6 s in 1,162 cut-ins and below 0.3 s in 90.
+Only 30.5 % of the cut-ins are closing at the moment of crossing. Median THW is 1.13 s and median gap 30 m. TTC is below 4 s in 27 cut-ins, below 3 s in 7 and below 2 s in 0. DRAC exceeds 2 m/s² in 3 and 4 m/s² in 0. The share of cut-ins with TTC below 2 s (the danger value of UN R157's cut-in driver model, Annex 4; not a pass criterion, which in R157 §5.2.5.2 is no collision under stated conditions) is therefore zero, with a one-sided 95 % upper bound of 3.66e-04. THW is short much more often: below 0.6 s in 1,162 cut-ins and below 0.3 s in 90.
 
 ![Histograms of THW, TTC and DRAC at cut-in. Bins with fewer than 10 events are not drawn.](../figures/highd_fig2_surrogates.png)
 

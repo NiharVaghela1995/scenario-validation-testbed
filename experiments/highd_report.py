@@ -84,7 +84,7 @@ Lane-change counts equal highD's metadata ({n(E['checks']['meta_lane_changes'])}
 
 ## Surrogate measures at cut-in
 
-Only {pct(V['share_closing'])} of the cut-ins are closing at the moment of crossing. Median THW is {f2(q['thw']['0.5'])} s and median gap {q['gap']['0.5']:.0f} m. TTC is below 4 s in {V['ttc_lt_4']} cut-ins, below 3 s in {V['ttc_lt_3']} and below 2 s in {V['ttc_lt_2']}. DRAC exceeds 2 m/s² in {V['drac_gt_2']} and 4 m/s² in {V['drac_gt_4']}. The share of cut-ins with TTC below the 2 s UN R157 line is therefore zero, with a one-sided 95 % upper bound of {W['critical_share']['upper_95_one_sided']:.2e}. THW is short much more often: below 0.6 s in {n(V['thw_lt_0.6'])} cut-ins and below 0.3 s in {V['thw_lt_0.3']}.
+Only {pct(V['share_closing'])} of the cut-ins are closing at the moment of crossing. Median THW is {f2(q['thw']['0.5'])} s and median gap {q['gap']['0.5']:.0f} m. TTC is below 4 s in {V['ttc_lt_4']} cut-ins, below 3 s in {V['ttc_lt_3']} and below 2 s in {V['ttc_lt_2']}. DRAC exceeds 2 m/s² in {V['drac_gt_2']} and 4 m/s² in {V['drac_gt_4']}. The share of cut-ins with TTC below 2 s (the danger value of UN R157's cut-in driver model, Annex 4; not a pass criterion, which in R157 §5.2.5.2 is no collision under stated conditions) is therefore zero, with a one-sided 95 % upper bound of {W['critical_share']['upper_95_one_sided']:.2e}. THW is short much more often: below 0.6 s in {n(V['thw_lt_0.6'])} cut-ins and below 0.3 s in {V['thw_lt_0.3']}.
 
 ![Histograms of THW, TTC and DRAC at cut-in. Bins with fewer than 10 events are not drawn.](../figures/highd_fig2_surrogates.png)
 
