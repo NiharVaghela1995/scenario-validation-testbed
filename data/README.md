@@ -25,7 +25,9 @@ not repair them.
 
 Access is by application and for non-commercial use only: <https://www.highd-dataset.com/>. You may not redistribute the data or
 anything from which it can be recovered, and you must cite Krajewski et al., ITSC 2018 (doi:10.1109/ITSC.2018.8569552). Read the
-full terms on the dataset page. Once you have access, put the files in `data/raw/highd/` and use `pilot/loaders.py:load_highd`:
+full terms on the dataset page. Once you have access, keep the files outside the repository and set `HIGHD_DATA` for the pilot in
+[`docs/HIGHD_PILOT.md`](../docs/HIGHD_PILOT.md) (default `~/datasets/highD/data`). For `pilot/loaders.py:load_highd` on its own, any path works, for
+example the git-ignored `data/raw/highd/`:
 
 ```text
 data/raw/highd/01_tracks.csv  01_tracksMeta.csv  01_recordingMeta.csv  ...
